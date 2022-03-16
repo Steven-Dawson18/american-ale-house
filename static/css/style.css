@@ -66,6 +66,24 @@ a.category-badge > span.badge:hover {
     background: #E6BB1A !important;
     color: #fff !important;
 }
+
+.text-red {
+    color: #AF0707;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
   
 div.transbox {
     margin: 30px;
