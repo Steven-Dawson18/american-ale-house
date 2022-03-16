@@ -68,6 +68,8 @@ Click to see wireframes:
 
 The Colour scheme was generated using the eyedropper plugin to get one colour from the logo image and [colours](https://coolors.co/) to create the colour palette.
 
+[View Pallet Here](https://coolors.co/palette/9d3904-af0707-684c34-221e1f-c9b088-e6bb1a-ffffff)
+
 * Font Selection
  
 Two complimentary fonts were chosen with [Google Fonts](https://fonts.google.com/) to be used across the website.
