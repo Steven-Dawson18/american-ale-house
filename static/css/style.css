@@ -62,6 +62,45 @@ body {
     border: 1px solid black !important;
 }
 
+a.category-badge > span.badge:hover {
+    background: #E6BB1A !important;
+    color: #fff !important;
+}
+
+.text-red {
+    color: #AF0707;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+  
+div.transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    opacity: 0.7;
+}
+  
+div.transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #000000;
+}
+
+.text-white {
+    color:#ffffff;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -69,6 +108,13 @@ body {
   .container {
     max-width: 80%;
   }
+}
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 1121px) {
+    .site-title{
+        font-size: x-large;
+    }
 }
 
 /* fixed top navbar only on medium and up */
@@ -83,5 +129,16 @@ body {
 
     .header-container {
         padding-top: 164px;
+    }
+}
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
     }
 }

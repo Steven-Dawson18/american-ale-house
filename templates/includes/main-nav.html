@@ -10,10 +10,10 @@
                 All Products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
-                <a href="" class="dropdown-item">All Products</a>
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
+                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -21,10 +21,11 @@
                 American Beers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">Pale Ale</a>
-                <a href="" class="dropdown-item">IPA</a>
-                <a href="" class="dropdown-item">Larger</a>
-                <a href="" class="dropdown-item">Plisner</a>
+                <a href="{% url 'products' %}?category=ipa" class="dropdown-item">IPA</a>
+                <a href="{% url 'products' %}?category=kolsch" class="dropdown-item">Kolsch</a>
+                <a href="{% url 'products' %}?category=larger" class="dropdown-item">Larger</a>
+                <a href="{% url 'products' %}?category=pale_ale" class="dropdown-item">Pale Ale</a>
+                <a href="{% url 'products' %}?category=pilsner" class="dropdown-item">Plisner</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -32,8 +33,8 @@
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Best Sellers</a>
+                <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
+                <a href="{% url 'products' %}?category=best_sellers" class="dropdown-item">Best Sellers</a>
             </div>
         </li>
     </ul>
