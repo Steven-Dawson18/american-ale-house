@@ -54,6 +54,12 @@ body {
     color: white;
 }
 
+.btn-outline-black {
+    background: white;
+    color: black !important; /* use important to override link colors for <a> elements */
+    border: 1px solid black;
+}
+
 .text-black {
     color: #000 !important;
 }
@@ -141,4 +147,14 @@ div.transbox p {
     body {
         height: calc(100vh - 116px);
     }
+}
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
 }
