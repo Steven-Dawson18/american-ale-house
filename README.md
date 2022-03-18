@@ -43,7 +43,6 @@
 30. As a user I can understand the site meaning when I land on the home page so that I know I am on a site I want to purchase from
 
 
-
 ## Strategy
 
 ### Aim
