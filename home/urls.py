@@ -1,3 +1,4 @@
+"""Home Tests"""
 from django.urls import path
 from . import views
 

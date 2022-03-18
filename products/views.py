@@ -1,3 +1,4 @@
+"""Products Views"""
 from django.shortcuts import render, get_object_or_404
 from django.db.models.functions import Lower
 from .models import Product, Category
