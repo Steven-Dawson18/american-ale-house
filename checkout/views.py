@@ -10,6 +10,21 @@ from bag.contexts import bag_contents
 import stripe
 
 
+def checkout_summary(request):
+    #Couponform
+    bag = request.session.get('bag', {})
+    if not bag:
+        messages.error(request, "There's nothing in your bag at the moment")
+        return redirect(reverse('products'))
+
+        current_bag = bag_contents(request)
+        total = current_bag['grand_total']
+    template = 'checkout/checkout_summary.html'
+    # Coupon form in context
+
+    return render(request, template)
+
+
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
