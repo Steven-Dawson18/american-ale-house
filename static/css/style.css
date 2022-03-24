@@ -211,3 +211,34 @@ div.transbox p {
 #delivery-banner {
     background-color: #E6BB1A;
 }
+
+/* 
+---------------------------------------------
+Contact
+--------------------------------------------- 
+*/
+
+.contact-information {
+    background-color: #AF0707;
+    border: 1px solid #AF0707;
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+  }
+  
+  .opening-hours {
+    background-color: #AF0707;
+    border: 1px solid #AF0707;
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+  }
+  
+  .contact-form {
+    padding: 20px;
+    background-color: #E6BB1A;
+    margin-bottom: 2rem;
+  }
