@@ -48,15 +48,21 @@
             <div class="col-sm col-md-4">
                 <h4>Customer Service</h4>
                 <br>
-                <p>My account</p>
-                <br>
                 <div>
-                    <a href="{% url 'faqs' %}">FAQ's</a>
+                    <a class="text-decoration-none text-white" href="">My account</a>
                 </div>
                 <br>
-                <p>Policy</p>
+                <div>
+                    <a class="text-decoration-none text-white" href="{% url 'faqs' %}">FAQ's</a>
+                </div>
                 <br>
-                <p>Delivery Info</p>
+                <div>
+                    <a class="text-decoration-none text-white" href="">Policy</a>
+                </div>
+                <br>
+                <div>
+                    <a class="text-decoration-none text-white" href="">Delivery Info</a>
+                </div>
             </div>
             <div class="col-sm col-md-4">
                 <h4>Contact Us</h4>
@@ -70,10 +76,13 @@
                     AL3 3LA
                     <br>
                     England</p>
-                <p>Contact Email</p>
+                    <div>
+                        <a class="text-decoration-none text-white" href="{% url 'contact' %}">Contact Email</a>
+                    </div>
             </div>
             <div class="col-sm col-md-4">
                 <h4>Opening Hours</h4>
+                <br>
                 <p>
                     Monday - Friday: 09:00 - 16:30
                     <br>

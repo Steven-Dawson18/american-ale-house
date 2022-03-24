@@ -12,20 +12,28 @@
 {% block content %}
     <div class="container h-100 my-5">
         <div class="row h-100">
-            <div class="col-12 my-auto">
+            <div class="col-12 my-auto bg-light">
                 <div>
-                    <h1 class="display-4 logo-font text-black">
+                    <h1 class="display-4 logo-font text-black text-center">
                         Frequently Asked Questions
                     </h1>
+                    <div id="questions-div" class="my-5">
+                        <p>
+                            <a href="" class="text-uppercase text-black py-3">How do I update my delivery address?</a>
+                        </p>
+                        <p>
+                            <a href="" class="text-uppercase text-black py-3">Where is my order?</a>
+                        </p>
+                        <p>
+                            <a href="" class="text-uppercase text-black py-3">My cans arrived damaged</a>
+                        </p>
+                        <p>
+                            <a href="" class="text-uppercase text-black py-3">Recomended Beer Temperature</a>
+                        </p>
+                    </div>
                     <div class="my-5">
                         <p>
-                            <a href="" class="text-uppercase py-3">How do I update my delivery address?</a>
-                        </p>
-                        <p>
-                            <a href="" class="text-uppercase py-3">Where is my order?</a>
-                        </p>
-                        <p>
-                            <a href="" class="text-uppercase py-3">My cans arrived damaged</a>
+                            <a href="{% url 'home' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Home</a>
                         </p>
                     </div>
                 </div>
