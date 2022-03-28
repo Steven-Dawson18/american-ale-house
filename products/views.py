@@ -1,11 +1,13 @@
 """Products Views"""
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category
 from .forms import ProductForm
+from favourites.models import Favourites
 
 
 def all_products(request):
@@ -64,7 +66,15 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
+    try:
+        favourites = get_object_or_404(Favourites, username=request.user.id)
+    except Http404:
+        is_product_in_favourites = False
+    else:
+        is_product_in_favourites = bool(product in favourites.products.all())
+
     context = {
+        'is_product_in_favourites': is_product_in_favourites,
         'product': product,
     }
 
@@ -77,7 +87,7 @@ def add_product(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -103,7 +113,7 @@ def edit_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-        
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)

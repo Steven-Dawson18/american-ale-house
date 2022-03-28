@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h2 class="logo-font text-white">Favourites</h2>
+                <hr class="w-50 mb-1">
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <div class="row">
+                    {% for item in favourites_items %}
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card h-100 border-0">
+                                {% if item.image %}
+                                <a href="{% url 'product_detail' item.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="{{ item.name }}">
+                                </a>
+                                {% else %}
+                                <a href="{% url 'product_detail' item.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
+                                </a>
+                                {% endif %}
+                                <div class="card-body pb-0">
+                                    <p class="mb-0">{{ item.name }}</p>
+                                </div>
+                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-left font-weight-bold">{{ item.abv }}%ABV</p>
+                                            <p class="lead mb-0 text-left font-weight-bold">£{{ item.price }}</p>
+                                            {% if item.category %}
+                                                <p class="small mt-1 mb-0">
+                                                    <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                                                        <i class="fas fa-tag mr-1"></i>{{ item.category.friendly_name }}
+                                                    </a>
+                                                </p>
+                                            {% endif %}
+                                            {% if item.rating %}
+                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ item.rating }} / 5</small>
+                                            {% else %}
+                                                <small class="text-muted">No Rating</small>
+                                            {% endif %}
+                                            <br>
+                                            <a href="{% url 'remove_from_favourites' item.id 'favourites' %}" class="btn btn-danger rounded-0">Delete from favourites</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:1 %}
+                            <div class="col-12 d-sm-none mb-5">
+                                <hr>
+                            </div>
+                        {% endif %}                        
+                        {% if forloop.counter|divisibleby:2 %}
+                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                                <hr>
+                            </div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:3 %}
+                            <div class="col-12 d-none d-lg-block d-xl-none mb-5">
+                                <hr>
+                            </div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:4 %}
+                            <div class="col-12 d-none d-xl-block mb-5">
+                                <hr>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btt-button shadow-sm rounded-0 border border-black">
+        <a class="btt-link d-flex h-100">
+            <i class="fas fa-arrow-up text-red mx-auto my-auto"></i>
+        </a>	
+    </div>
+{% endblock %}
