@@ -14,11 +14,6 @@
         <div class="row">
             <div class="col text-center mt-3">
                 <h2 class="logo-font text-white">Favourites</h2>
-                {% for c in current_categories %}
-                    <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
-                        <span class="p-2 mt-2 badge badge-white text-white rounded-0 border border-light">{{ c.friendly_name }}</span>
-                    </a>
-                {% endfor %}
                 <hr class="w-50 mb-1">
             </div>
         </div>
@@ -26,35 +21,35 @@
     <div class="row">
         <div>
             <div class="row">
-                {% for product in products %}
+                {% for item in favourites_items %}
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         <div class="card h-100 border-0">
-                            {% if product.image %}
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% if item.image %}
+                            <a href="{% url 'product_detail' item.id %}">
+                                <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="{{ item.name }}">
                             </a>
                             {% else %}
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                            <a href="{% url 'product_detail' item.id %}">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
                             </a>
                             {% endif %}
                             <div class="card-body pb-0">
-                                <p class="mb-0">{{ product.name }}</p>
+                                <p class="mb-0">{{ item.name }}</p>
                             </div>
                             <div class="card-footer bg-white pt-0 border-0 text-left">
                                 <div class="row">
                                     <div class="col">
-                                        <p class="lead mb-0 text-left font-weight-bold">{{ product.abv }}%ABV</p>
-                                        <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
-                                        {% if product.category %}
+                                        <p class="lead mb-0 text-left font-weight-bold">{{ item.abv }}%ABV</p>
+                                        <p class="lead mb-0 text-left font-weight-bold">£{{ item.price }}</p>
+                                        {% if item.category %}
                                             <p class="small mt-1 mb-0">
                                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                                                    <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                                    <i class="fas fa-tag mr-1"></i>{{ item.category.friendly_name }}
                                                 </a>
                                             </p>
                                         {% endif %}
-                                        {% if product.rating %}
-                                            <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                        {% if item.rating %}
+                                            <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ item.rating }} / 5</small>
                                         {% else %}
                                             <small class="text-muted">No Rating</small>
                                         {% endif %}
