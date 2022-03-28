@@ -1,12 +1,14 @@
 """ Favourites Views """
 from django.shortcuts import (render, get_object_or_404, redirect)
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.urls import reverse
 from products.models import Product
 from .models import Favourites
 
 
+@login_required
 def favourites_view(request):
     """
     A view that displays users favourites
@@ -32,6 +34,7 @@ def favourites_view(request):
     return render(request, template, context)
 
 
+@login_required
 def add_to_favourites(request, item_id):
     """
     A view that will add a product item to favourites
@@ -51,6 +54,7 @@ def add_to_favourites(request, item_id):
     return redirect(reverse('product_detail', args=[item_id]))
 
 
+@login_required
 def remove_from_favourites(request, item_id, redirect_from):
     """
     A view that will add a product item to favourites
