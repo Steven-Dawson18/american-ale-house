@@ -77,7 +77,7 @@ The American Ale House websiteprovides the user the ability to purchaseAmerican 
     - Create responsice navigation
     - Add to README.md file
   
-* Sprint 2 - 16/03/2022 - 18/03/2022 (Finished at 17/03/2022)
+* Sprint 2 - 16/03/2022 - 18/03/2022 (Finished on 17/03/2022)
 
   + Add Product app
     - Set up all products view
@@ -90,7 +90,7 @@ The American Ale House websiteprovides the user the ability to purchaseAmerican 
     - Add mailchimp form
     - Create footer layout
 
-* Sprint 3 - 21/03/2022 - 23/03/2022 (Finished at 17/03/2022)
+* Sprint 3 - 21/03/2022 - 23/03/2022 (Finished on 23/03/2022)
 
   + Add Checkout app
     - Set up Models
@@ -112,6 +112,32 @@ The American Ale House websiteprovides the user the ability to purchaseAmerican 
    - Create HTML
    - Set up Email functionality
    - Add link to footer
+
+  * Sprint 4 - 24/03/2022 - 27/03/2022 (Unfinished 27/03/2022)
+    + Add Profile app
+    - Set up Models
+    - Set up admin
+    - Set up views
+    - Set up templates
+    + Customise allauth templates
+    - Set up templates
+    - Add CSS
+    + Add Toasts
+    - Set up notifications with toasts
+
+  +During this iteration I ran out of time to complete the Favourites app and therefore it has been placed back in the backlog and will be prioritised for the next iteration. Probably should have factored in Mothers Day!
+
+* Sprint 5 - 28/03/2022 - 30/03/2022 (Finished on 30/03/2022)
+    + Add Favourites app
+    - Set up Models
+    - Set up admin
+    - Set up views
+    - Set up templates
+    + Add Product Reviews
+    - Set up Models
+    - Set up admin
+    - Set up views
+    - Set up templates
 
 ### Structure
 
