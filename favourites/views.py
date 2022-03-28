@@ -49,3 +49,24 @@ def add_to_favourites(request, item_id):
         messages.info(request, 'Added the product to your favourites')
 
     return redirect(reverse('product_detail', args=[item_id]))
+
+
+def remove_from_favourites(request, item_id, redirect_from):
+    """
+    A view that will add a product item to favourites
+    """
+    product = get_object_or_404(Product, pk=item_id)
+    favourites = get_object_or_404(Favourites, username=request.user.id)
+    if product in favourites.products.all():
+        favourites.products.remove(product)
+        messages.info(request, 'Removed the product '
+                               'from your favourites list')
+    else:
+        messages.error(request, 'That product is '
+                                'not in your favourites list!')
+    if redirect_from == 'favourites':
+        redirect_url = reverse('favourites')
+    else:
+        redirect_url = reverse('product_detail', args=[item_id])
+
+    return redirect(redirect_url)
