@@ -112,7 +112,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm col-md-8 p-5">
-                        <form action="" method="POST">
+                        <form action="{% url 'submit_review' product.id %}" method="POST">
                             {% csrf_token %}
                             <h5>Write Your Review</h5>
                             <div>
@@ -142,6 +142,16 @@
                             </div>
                         </form>
                     </div> 
+                    <div class="col-sm col-md-8 p-5">
+                        <h3>Customer Reviews</h3>
+                        {% for review in reviews %}
+                            <div class="border">
+                                <p class="font-weight-bold mb-2 mt-3">{{ review.subject }} Posted by: {{ review.user }} on {{ review.created_on }}</p>
+                                <p class="text-black mb-2 mt-3">Rating: {{ review.rating }} </p>
+                                <p class="text-black mb-2 mt-3">Review Text: {{ review.review }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div> 
         </div>

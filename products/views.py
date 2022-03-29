@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category
-from .forms import ProductForm
+from .models import Product, Category, ReviewRating
+from .forms import ProductForm, ReviewForm
 from favourites.models import Favourites
 
 
@@ -65,6 +65,8 @@ def product_detail(request, product_id):
     """ A view to show individual product details"""
 
     product = get_object_or_404(Product, pk=product_id)
+    review_form = ReviewForm(data=request.POST or None)
+    reviews = ReviewRating.objects.filter(product=product).order_by('-created_on')
 
     try:
         favourites = get_object_or_404(Favourites, username=request.user.id)
@@ -76,6 +78,8 @@ def product_detail(request, product_id):
     context = {
         'is_product_in_favourites': is_product_in_favourites,
         'product': product,
+        'review_form': review_form,
+        'reviews': reviews,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -147,3 +151,52 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def submit_review(request, product_id):
+    """ View to review a product """
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+
+        if review_form.is_valid():
+            already_reviewed = ReviewRating.objects.filter(product=product,
+                                                           user=request.user)
+            if not already_reviewed:
+                ReviewRating.objects.create(
+                        product=product,
+                        user=request.user,
+                        subject=request.POST['subject'],
+                        rating=request.POST['rating'],
+                        review=request.POST['review'],
+                )
+                reviews = ReviewRating.objects.filter(product=product)
+                messages.info(request, 'Successfully added a review!')
+            else:
+                messages.error(request, 'You have already reviewed '
+                                        'this product!')
+            return redirect(reverse('product_detail', args=[product.id]))
+
+        messages.error(request, 'Your review has not been submitted')
+    messages.error(request, 'Invalid Method.')
+    return redirect(reverse('product_detail', args=[product.id]))
+
+    # if request.method == "POST":
+    #     try:
+    #         reviews = ReviewRating.objects.get(user=request.user, product=product)
+    #         form = ReviewForm(request.POST, instance=reviews)
+    #         form.save()
+    #         messages.success(request, 'Your review has been updated!')
+    #         return redirect(url)
+    #     except ReviewRating.DoesNotExist:
+    #         form = ReviewForm(request.POST)
+    #         if form.is_valid():
+    #             data = ReviewForm()
+    #             data.subject = form.cleaned_data['subject']
+    #             data.review = form.cleaned_data['review']
+    #             data.rating = form.cleaned_data['rating']
+    #             data.product = product
+    #             data.user = request.user
+    #             data.save()
+    #             messages.success(request, 'Your review has been Submitted!')
+    #             return redirect(url)
