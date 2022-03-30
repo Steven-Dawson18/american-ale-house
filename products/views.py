@@ -1,10 +1,13 @@
 """Products Views"""
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import Http404
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.urls import reverse_lazy
 from .models import Product, Category, ReviewRating
 from .forms import ProductForm, ReviewForm
 from favourites.models import Favourites
@@ -181,22 +184,23 @@ def submit_review(request, product_id):
     messages.error(request, 'Invalid Method.')
     return redirect(reverse('product_detail', args=[product.id]))
 
-    # if request.method == "POST":
-    #     try:
-    #         reviews = ReviewRating.objects.get(user=request.user, product=product)
-    #         form = ReviewForm(request.POST, instance=reviews)
-    #         form.save()
-    #         messages.success(request, 'Your review has been updated!')
-    #         return redirect(url)
-    #     except ReviewRating.DoesNotExist:
-    #         form = ReviewForm(request.POST)
-    #         if form.is_valid():
-    #             data = ReviewForm()
-    #             data.subject = form.cleaned_data['subject']
-    #             data.review = form.cleaned_data['review']
-    #             data.rating = form.cleaned_data['rating']
-    #             data.product = product
-    #             data.user = request.user
-    #             data.save()
-    #             messages.success(request, 'Your review has been Submitted!')
-    #             return redirect(url)
+
+class UpdateReviewView(SuccessMessageMixin, UpdateView):
+    """
+    A view to edit a Review
+    """
+    model = ReviewRating
+    form_class = ReviewForm
+    template_name = "products/update_review.html"
+    success_message = "Review has been updated"
+    success_url = reverse_lazy('products')
+
+
+class ReviewDeleteView(SuccessMessageMixin, DeleteView):
+    '''
+    View displays the option to delete the review to the user.
+    '''
+    model = ReviewRating
+    template_name = 'products/delete_review.html'
+    success_message = "Review has been deleted"
+    success_url = reverse_lazy('products')

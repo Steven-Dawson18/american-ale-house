@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<form class="delete-form" method="POST">{% csrf_token %}
+    <p>Are you sure you want to delete your review: "{{ object.subject }}"?</p>
+    <!-- <input class="btn" type="submit" value="Confirm"> -->
+    <button class="btn btn-danger mt-4" aria-label="delete post">Delete Review! </button>
+    <p class="inline-flex"><a class="menu-btn cancel-btn" href="">Cancel</a></p>
+</form>
+
+
+{% endblock %}

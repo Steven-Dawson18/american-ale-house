@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'products/css/rating.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+                <h2 class="logo-font text-white text-center">{{ product.name }} 
+                </h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<div class="col-sm col-md-8 p-5">
+    <form method="post" class="review_form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update">Submit>
+    </form>
+</div> 
+
+{% endblock %}

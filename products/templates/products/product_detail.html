@@ -141,6 +141,7 @@
                                 <input type="submit" value="Submit Review" class="btn btn-black rounded-0">
                             </div>
                         </form>
+                        
                     </div> 
                     <div class="col-sm col-md-8 p-5">
                         <h3>Customer Reviews</h3>
@@ -149,6 +150,10 @@
                                 <p class="font-weight-bold mb-2 mt-3">{{ review.subject }} Posted by: {{ review.user }} on {{ review.created_on }}</p>
                                 <p class="text-black mb-2 mt-3">Rating: {{ review.rating }} </p>
                                 <p class="text-black mb-2 mt-3">Review Text: {{ review.review }}</p>
+                                {% if review.user == request.user or request.user.is_superuser %}
+                                    <p class="inline-flex"><a href="{% url 'update_review' review.id %}" class="menu-btn">Update Review</a></p>
+                                    <p class="inline-flex"><a href="{% url 'delete_review' review.id %}" class="menu-btn">Delete Review</a></p>
+                                {%endif%}
                             </div>
                         {% endfor %}
                     </div>
