@@ -12,11 +12,12 @@
 
 {% block content %}
 
-<form class="delete-form" method="POST">{% csrf_token %}
-    <p>Are you sure you want to delete your review: "{{ object.subject }}"?</p>
-    <!-- <input class="btn" type="submit" value="Confirm"> -->
-    <button class="btn btn-danger mt-4" aria-label="delete post">Delete Review! </button>
-    <p class="inline-flex"><a class="menu-btn cancel-btn" href="">Cancel</a></p>
+<form class="delete-form col-sm col-md-8 offset-md-2 p-2 my-5 bg-light" method="POST">{% csrf_token %}
+    <p>{{ object.user }} are you sure you want to delete your review: "{{ object.subject }}"?</p>
+    {{ object.review }}
+    <br>
+    <button class="btn btn-danger mt-4" aria-label="delete post">Delete Review!</button>
+    <div class="inline"><a class="btn btn-black mt-4" href="{% url 'products' %}">Cancel</a></div>
 </form>
 
 

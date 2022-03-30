@@ -27,6 +27,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     abv = models.DecimalField(max_digits=6, decimal_places=1, null=True,
                               blank=True)
+    product_rating = models.FloatField(default=5)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     added_date = models.DateTimeField(auto_now_add=True)
