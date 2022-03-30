@@ -1,10 +1,11 @@
 """Products Views"""
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import Http404
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
+from django.views.generic import UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.urls import reverse_lazy
@@ -156,6 +157,7 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
+@login_required
 def submit_review(request, product_id):
     """ View to review a product """
     product = get_object_or_404(Product, pk=product_id)
@@ -173,7 +175,6 @@ def submit_review(request, product_id):
                         rating=request.POST['rating'],
                         review=request.POST['review'],
                 )
-                reviews = ReviewRating.objects.filter(product=product)
                 messages.info(request, 'Successfully added a review!')
             else:
                 messages.error(request, 'You have already reviewed '
@@ -185,7 +186,7 @@ def submit_review(request, product_id):
     return redirect(reverse('product_detail', args=[product.id]))
 
 
-class UpdateReviewView(SuccessMessageMixin, UpdateView):
+class UpdateReviewView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """
     A view to edit a Review
     """
@@ -196,7 +197,7 @@ class UpdateReviewView(SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('products')
 
 
-class ReviewDeleteView(SuccessMessageMixin, DeleteView):
+class ReviewDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     '''
     View displays the option to delete the review to the user.
     '''
