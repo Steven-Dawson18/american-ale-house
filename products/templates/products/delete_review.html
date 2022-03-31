@@ -11,14 +11,18 @@
 {% endblock %}
 
 {% block content %}
-
-<form class="delete-form col-sm col-md-8 offset-md-2 p-2 my-5 bg-light" method="POST">{% csrf_token %}
-    <p>{{ object.user }} are you sure you want to delete your review: "{{ object.subject }}"?</p>
-    {{ object.review }}
-    <br>
-    <button class="btn btn-danger mt-4" aria-label="delete post">Delete Review!</button>
-    <div class="inline"><a class="btn btn-black mt-4" href="{% url 'products' %}">Cancel</a></div>
-</form>
-
+<div class="container h-100">
+    <div class="col-sm col-md-8 offset-md-2 p-2 my-5 bg-light">
+        <form class="delete-form" method="POST">{% csrf_token %}
+            <p>{{ object.user }} are you sure you want to delete your review Titled: "<strong>{{ object.subject }}</strong>"?</p>
+            <br>
+            <p> Review Content:</p>
+            <div><strong>{{ object.review }}</strong></div>
+            <br>
+            <button class="btn btn-danger my-2 ml-2" aria-label="delete post">Delete Review!</button>
+            <a class="btn btn-outline-black my-2 ml-2" href="{% url 'products' %}">Cancel</a>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
