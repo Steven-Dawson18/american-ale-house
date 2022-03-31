@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% load bag_tools %}
 
 {% block extra_css %}
@@ -52,7 +53,7 @@
                             <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            <p class="my-0 small text-muted">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -62,10 +63,10 @@
                 {% else %}
                 <div class="row text-black text-right">
                     <div class="col-7 offset-5">
-                        <form class="card p-2" action="" method="POST">
+                        <form class="card p-2" action="{% url 'add_coupon' %}" method="POST">
                             {% csrf_token %}
                             <div class="input-group">
-                                
+                                {{ coupon_form.code }}
                                 <div class="input-group-append">
                                 <button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Redeem</button>
                                 </div>
@@ -79,9 +80,9 @@
                         <p class="my-0">Grand Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0">${{ total | floatformat:2 }}</p>
-                        <p class="my-0">${{ delivery | floatformat:2 }}</p>
-                        <p class="my-0"><strong>${{ grand_total | floatformat:2 }}</strong></p>
+                        <p class="my-0">£{{ total | floatformat:2 }}</p>
+                        <p class="my-0">£{{ delivery | floatformat:2 }}</p>
+                        <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
                     </div>
                     <div class="col-7 offset-5">
                         <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
