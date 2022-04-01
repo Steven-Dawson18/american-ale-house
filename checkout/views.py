@@ -17,6 +17,36 @@ import stripe
 import json
 
 
+def get_coupon(request, code):
+    try:
+        coupon = Coupon.objects.get(code=code)
+        return coupon
+    except ObjectDoesNotExist:
+        messages.info(request, "This coupon does not exist")
+        return redirect('checkout')
+
+
+class AddCouponView(View):
+    def post(self, request, *args, **kwargs):
+        form = CouponApplyForm(self.request.POST or None)
+
+        if form.is_valid():
+            code = form.cleaned_data.get('code')
+            print(code)
+            bag = self.request.session.get('bag', {})
+            if not bag:
+                messages.error(self.request, "There's nothing in your bag at the moment")
+                return redirect(reverse('products'))
+
+            coupon = get_coupon(self.request, code)
+            request.session['coupon_id'] = coupon.id
+
+            messages.success(self.request, "The coupon has been successfully added")
+            return redirect('checkout_summary')
+        else:
+            messages.info(self.request, "That code is not valid")
+
+
 @require_POST
 def cache_checkout_data(request):
     """ Cache checkout data """
@@ -36,14 +66,13 @@ def cache_checkout_data(request):
 
 
 def checkout_summary(request):
-    coupon_form = CouponApplyForm()
     bag = request.session.get('bag', {})
     if not bag:
         messages.error(request, "There's nothing in your bag at the moment")
         return redirect(reverse('products'))
 
-        current_bag = bag_contents(request)
-        total = current_bag['grand_total']
+    coupon_form = CouponApplyForm()
+
     template = 'checkout/checkout_summary.html'
     context = {
         'coupon_form': coupon_form,
@@ -108,11 +137,9 @@ def checkout(request):
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
-        total = current_bag['grand_total']
-        stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
+            amount=current_bag['stripe_total'],
             currency=settings.STRIPE_CURRENCY,
         )
 
@@ -140,10 +167,8 @@ def checkout(request):
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
 
-    coupon_form = CouponApplyForm()
     template = 'checkout/checkout.html'
     context = {
-        'coupon_form': coupon_form,
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
@@ -193,36 +218,3 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-
-
-def get_coupon(request, code):
-    try:
-        coupon =Coupon.objects.get(code=code)
-        return coupon
-    except ObjectDoesNotExist:
-        messages.info(request, "This coupon does not exist")
-        return redirect('checkout')
-
-
-class AddCouponView(View):
-    def post(self, request, *args, **kwargs):
-        form = CouponApplyForm(self.request.POST or None)
-
-        if form.is_valid():
-            try:
-                code = form.cleaned_data.get('code')
-                print(code)
-                bag = self.request.session.get('bag', {})
-                if not bag:
-                    messages.error(self.request, "There's nothing in your bag at the moment")
-                    return redirect(reverse('products'))
-
-                current_bag = bag_contents(self.request)
-                coupon = get_coupon(self.request, code)
-                total = current_bag['grand_total'] - coupon.discount
-
-                messages.success(self.request, "The coupon has been successfully added")
-                return redirect('checkout_summary')
-            except ObjectDoesNotExist:
-                messages.info(self.request, "You do not have an active order")
-                return redirect('checkout_summary')

@@ -11,6 +11,15 @@ from products.models import Product
 from profiles.models import UserProfile
 
 
+class Coupon(models.Model):
+    code = models.CharField(max_length=50)
+    discount = models.DecimalField(max_digits=6, decimal_places=2,
+                                   null=False, default=20)
+
+    def __str__(self):
+        return self.code
+
+
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
@@ -26,6 +35,7 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    ordered = models.BooleanField(default=False)
     delivery_cost = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(
@@ -35,6 +45,8 @@ class Order(models.Model):
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(
         max_length=254, null=False, blank=False, default='')
+    coupon = models.ForeignKey(Coupon, on_delete=models.SET_NULL,
+                               blank=True, null=True)
 
     def _generate_order_number(self):
         """
@@ -91,12 +103,3 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'Item:{self.product.name} on order {self.order.order_number}'
-
-
-class Coupon(models.Model):
-    code = models.CharField(max_length=50)
-    discount = models.DecimalField(max_digits=6, decimal_places=2,
-                                   null=False, default=20)
-
-    def __str__(self):
-        return self.code
