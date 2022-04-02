@@ -32,7 +32,6 @@ class AddCouponView(View):
 
         if form.is_valid():
             code = form.cleaned_data.get('code')
-            print(code)
             bag = self.request.session.get('bag', {})
             if not bag:
                 messages.error(self.request, "There's nothing in your bag at the moment")
@@ -67,6 +66,7 @@ def cache_checkout_data(request):
 
 def checkout_summary(request):
     bag = request.session.get('bag', {})
+    # del request.session['coupon_id']
     if not bag:
         messages.error(request, "There's nothing in your bag at the moment")
         return redirect(reverse('products'))
