@@ -70,7 +70,8 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     review_form = ReviewForm(data=request.POST or None)
-    reviews = ReviewRating.objects.filter(product=product).order_by('-created_on')
+    reviews = ReviewRating.objects.filter(
+        product=product).order_by('-created_on')
 
     try:
         favourites = get_object_or_404(Favourites, username=request.user.id)
@@ -103,7 +104,8 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add product. Please ensure \
+                the form is valid.')
     else:
         form = ProductForm()
 
@@ -130,7 +132,8 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update product. Please \
+                ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
