@@ -1,5 +1,6 @@
 """ Checkout Views """
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse)
 from django.views.decorators.http import require_POST
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
@@ -34,16 +35,25 @@ class AddCouponView(View):
             code = form.cleaned_data.get('code')
             bag = self.request.session.get('bag', {})
             if not bag:
-                messages.error(self.request, "There's nothing in your bag at the moment")
+                messages.error(
+                    self.request, "There's nothing in your bag at the moment")
                 return redirect(reverse('products'))
 
             coupon = get_coupon(self.request, code)
             request.session['coupon_id'] = coupon.id
 
-            messages.success(self.request, "The coupon has been successfully added")
+            messages.success(
+                self.request, "The coupon has been successfully added")
             return redirect('checkout_summary')
         else:
             messages.info(self.request, "That code is not valid")
+
+
+def remove_coupon(request):
+    """ View to remove a coupon from the bag """
+    del request.session['coupon_id']
+    messages.success(request, "The coupon has been removed")
+    return redirect('checkout_summary')
 
 
 @require_POST
@@ -124,21 +134,22 @@ def checkout(request):
                         order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+                        "One of the products in your bag wasn't found. "
                         "Please call us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
         bag = request.session.get('bag', {})
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(request, "There's nothing in your bag")
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
@@ -148,7 +159,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        # Attempt to prefill the form with any info the user maintains in their profile
+        # Prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
