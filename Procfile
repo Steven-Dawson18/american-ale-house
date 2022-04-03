@@ -1,1 +1,1 @@
-web: gunicorn american-ale-house.wsgi:application
+web: gunicorn american_ale_house.wsgi.application
