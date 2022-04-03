@@ -66,6 +66,8 @@ class Order(models.Model):
                 settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
             self.delivery_cost = 0
+        if self.coupon is not None:
+            self.order_total = self.order_total - self.coupon.discount
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
 

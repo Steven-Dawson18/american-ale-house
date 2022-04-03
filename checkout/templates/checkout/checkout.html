@@ -62,13 +62,13 @@
                             <p class="my-0">Order Total:</p>
                             <p class="my-0">Delivery:</p>
                             <p class="my-0">Discount Applied:</p>
-                            <p class="my-0">Discounted Grand Total:</p>
+                            <p class="my-0">Grand Total:</p>
                         </div>
                         <div class="col-3">
                             <p class="my-0">£{{ total | floatformat:2 }}</p>
                             <p class="my-0">£{{ delivery | floatformat:2 }}</p>
                             <p class="my-0">£{{ coupon.discount }}</p>
-                            <p class="my-0"><strong>£{{ discounted_grand_total | floatformat:2 }}</strong></p>
+                            <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
                         </div>
                     {% else %}
                         <div class="col-7 offset-2">
@@ -142,7 +142,7 @@
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
                             {% if coupon %}
-                            <span>Your card will be charged <strong>£{{ discounted_grand_total|floatformat:2 }}</strong></span>
+                            <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
                             {% else %}
 							<span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
                             {% endif %}
