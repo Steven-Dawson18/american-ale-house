@@ -139,6 +139,25 @@ The American Ale House websiteprovides the user the ability to purchaseAmerican 
     - Set up views
     - Set up templates
 
+* Sprint 6 - 31/03/2022 - 3/04/2022 (Finished on 3/04/2022)
+  + Add Coupon
+    - Set up Models
+    - Set up views
+    - Set up contexts
+    - Set up templates
+  + Add Facebook Business link
+    - Create FB busness page
+    - Add link in footer (not to deployed site but will be once deployed)
+  + Add site policy
+    - Generated a site policy with a generator site
+    - Added link to the Footer
+  + Add Subscription (mailchimp)
+    - Form already in place for mailchimp
+    - Created mailchimp account (Site is not deployed at this point)
+    - Moved css to custom file
+    - Moved js to bottom of base.html
+
+
 ### Structure
 
 * A clear and straightforward layout is in place to ensure users can navigate intuitively and have a leisurely experience.

@@ -50,8 +50,9 @@ def all_products(request):
                                ("You didn't enter any search criteria!"))
                 return redirect(reverse('products'))
 
-        queries = Q(name__icontains=query) | Q(description__icontains=query)
-        products = products.filter(queries)
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
+            products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
 
@@ -178,7 +179,7 @@ def submit_review(request, product_id):
                         rating=request.POST['rating'],
                         review=request.POST['review'],
                 )
-                messages.info(request, 'Successfully added a review!')
+                messages.success(request, 'Successfully added a review!')
             else:
                 messages.error(request, 'You have already reviewed '
                                         'this product!')
