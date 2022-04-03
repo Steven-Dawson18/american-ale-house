@@ -12,6 +12,7 @@ def bag_contents(request):
     product_count = 0
     bag = request.session.get('bag', {})
     coupon_id = request.session.get('coupon_id', int())
+
     try:
         coupon = Coupon.objects.get(id=coupon_id)
 
@@ -36,16 +37,19 @@ def bag_contents(request):
         free_delivery_delta = 0
 
     grand_total = delivery + total
+
     if coupon:
-        discounted_grand_total = grand_total - coupon.discount
-        stripe_total = round(discounted_grand_total * 100)
+        grand_total = delivery + total - coupon.discount
+        # discounted_grand_total = grand_total - coupon.discount
+        stripe_total = round(grand_total * 100)
     else:
-        discounted_grand_total = grand_total
+        grand_total = delivery + total
+        # discounted_grand_total = grand_total
         stripe_total = round(grand_total * 100)
 
     context = {
         'stripe_total': stripe_total,
-        'discounted_grand_total': discounted_grand_total,
+        # 'discounted_grand_total': discounted_grand_total,
         'coupon': coupon,
         'bag_items': bag_items,
         'total': total,
