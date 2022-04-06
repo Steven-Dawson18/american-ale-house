@@ -103,6 +103,14 @@ div.transbox p {
     color: #000000;
 }
 
+.text-red {
+    color: #dc3545;
+}
+
+.text-yellow {
+    color: #E6BB1A;
+}
+
 .text-white {
     color:#ffffff;
 }
