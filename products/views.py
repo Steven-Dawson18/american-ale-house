@@ -73,7 +73,10 @@ def product_detail(request, product_id):
     review_form = ReviewForm(data=request.POST or None)
     reviews = ReviewRating.objects.filter(
         product=product).order_by('-created_on')
-
+    total_reviews = reviews.count()
+    rating_average = get_average_rating(reviews)
+    Product.objects.filter(id=product.id).update(
+        rating=rating_average)
     try:
         favourites = get_object_or_404(Favourites, username=request.user.id)
     except Http404:
@@ -86,6 +89,8 @@ def product_detail(request, product_id):
         'product': product,
         'review_form': review_form,
         'reviews': reviews,
+        'total_reviews': total_reviews,
+        'rating_average': rating_average
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -179,6 +184,10 @@ def submit_review(request, product_id):
                         rating=request.POST['rating'],
                         review=request.POST['review'],
                 )
+                reviews = ReviewRating.objects.filter(product=product)
+                rating_average = get_average_rating(reviews)
+                Product.objects.filter(id=product.id).update(
+                    rating=rating_average)
                 messages.success(request, 'Successfully added a review!')
             else:
                 messages.error(request, 'You have already reviewed '
@@ -209,3 +218,23 @@ class ReviewDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = 'products/delete_review.html'
     success_message = "Review has been deleted"
     success_url = reverse_lazy('products')
+
+
+def get_average_rating(reviews):
+    """
+    Function to get the average rating of product
+    from the reviews
+    """
+    total_reviews = 0
+    ratings_total = 0
+    rating_average = 0
+    for review in reviews:
+        total_reviews = total_reviews + 1
+        ratings_total = ratings_total + review.rating
+
+    if total_reviews > 0:
+        average_rating = (ratings_total / total_reviews)
+        rating_average = round(average_rating, 1)
+        return rating_average
+    else:
+        return rating_average

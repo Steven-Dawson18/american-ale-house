@@ -10,7 +10,7 @@ The live Cockapoo Cafe site can be viewed [here](https://american-ale-house.hero
 + [Strategy](#strategy)
 + [Scope](#scope)
 + [Features](#features)
-+ [Features](#marketing)
++ [Marketing](#marketing)
 + [Technologies Used](#tech)
 + [Testing](#testing)
 + [Deployment](#deployment)
