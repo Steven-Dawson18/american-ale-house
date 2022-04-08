@@ -2,7 +2,7 @@
 from django.test import TestCase
 from django.contrib.messages import get_messages
 from django.contrib.auth.models import User
-from products.models import Category, Product
+from products.models import Category, Product, ReviewRating
 
 
 class TestProductModels(TestCase):
@@ -63,7 +63,7 @@ class TestProductModels(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'products/product_detail.html')
 
-    def test_superuser_add_product(self):
+    def test_superuser_can_add_product(self):
         """
         Test superuser can access the add a product page
         """
@@ -71,7 +71,7 @@ class TestProductModels(TestCase):
         response = self.client.get('/products/add/')
         self.assertTemplateUsed(response, 'products/add_product.html')
 
-    def test_add_product_as_non_superuser(self):
+    def test_non_superuser_can_not_add_product(self):
         """
         Test non superuser can't access the add a product page
         """
@@ -80,3 +80,95 @@ class TestProductModels(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(str(messages[0]),
                          "Sorry, only store owners can do that.")
+        self.assertEqual(response.status_code, 302)
+
+    def test_superuser_can_delete_product(self):
+        """
+        Tests a superuser can delete a product
+        """
+        self.client.login(username='test_super_user', password='test_password')
+        product = Product.objects.get()
+        response = self.client.post(f'/products/delete/{product.id}/')
+        self.assertRedirects(response, '/products/')
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(str(messages[0]), "Product deleted!")
+        deleted_product = Product.objects.filter(id=product.id)
+        self.assertEqual(len(deleted_product), 0)
+
+    def test_non_superuser_can_not_delete_product(self):
+        """
+        Tests a non superuser can't delete a product
+        """
+        self.client.login(username='test_user', password='test_password')
+        product = Product.objects.get()
+        response = self.client.post(f'/products/delete/{product.id}/')
+        self.assertRedirects(response, '/')
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(str(messages[0]), "Sorry, "
+                                           "only store owners can do that.")
+        self.assertEqual(response.status_code, 302)
+
+    def test_review_product(self):
+        """
+        Test a logged in user can add a review to a product
+        """
+        test_user = User.objects.create_user(
+            username='test_user1', password='test_password')
+        self.client.login(username='test_user', password='test_password')
+        product = Product.objects.get()
+
+        ReviewRating.objects.create(
+            user=test_user,
+            product=product,
+            subject='Test review',
+            rating='5',
+            review='Test Review Text',
+        )
+        response = self.client.post(f'/products/submit_review/{product.id}/',
+                                    {'subject': 'Test review',
+                                     'rating': '5',
+                                     'review': 'Test Review Text'})
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(
+            str(messages[0]), "Your review has been successfully added!")
+
+    # def test_update_review(self):
+    #     """
+    #     Test a logged in user can update a review on a product
+    #     """
+    #     test_user = User.objects.create_user(
+    #         username='test_user1', password='test_password')
+    #     self.client.login(username='test_user', password='test_password')
+    #     product = Product.objects.get()
+
+    #     ReviewRating.objects.create(
+    #         user=test_user,
+    #         product=product,
+    #         subject='Test review',
+    #         rating='5',
+    #         review='Test Review Text',
+    #     )
+    #     response = self.client.post('/products/')
+    #     messages = list(get_messages(response.wsgi_request))
+    #     self.assertEqual(str(messages[0]), "Review has been updated")
+        # self.assertEqual(response.status_code, 302)
+
+    # def test_delete_review(self):
+    #     """
+    #     Test a logged in user can delete a review on a product
+    #     """
+    #     test_user = User.objects.create_user(
+    #         username='test_user1', password='test_password')
+    #     self.client.login(username='test_user', password='test_password')
+    #     product = Product.objects.get()
+
+    #     ReviewRating.objects.create(
+    #         user=test_user,
+    #         product=product,
+    #         subject='Test review',
+    #         rating='5',
+    #         review='Test Review Text',
+    #     )
+    #     response = self.client.post(
+    #         f'/products/')
+    #     self.assertEqual(response.status_code, 302)

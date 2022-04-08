@@ -27,6 +27,7 @@ class TestProductModels(TestCase):
         ReviewRating.objects.create(
             user=test_user,
             product=product,
+            subject='Test review',
             rating='5',
             review='Test Review Text',
         )

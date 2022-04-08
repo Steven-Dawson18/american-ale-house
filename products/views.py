@@ -205,7 +205,8 @@ def submit_review(request, product_id):
                 rating_average = get_average_rating(reviews)
                 Product.objects.filter(id=product.id).update(
                     rating=rating_average)
-                messages.success(request, 'Successfully added a review!')
+                messages.success(
+                    request, 'Your review has been successfully added!')
             else:
                 messages.error(request, 'You have already reviewed '
                                         'this product!')
