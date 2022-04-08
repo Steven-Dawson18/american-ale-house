@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <!-- Flickity -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+{% endblock %}
+
+{% block extra_js %}
+    <!--Flickity-->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -10,20 +20,81 @@
 {% endblock %}
 
 {% block content %}
+<section>
     <div class="container h-100 my-5">
         <div class="row h-100">
-            <div class="col-5 col-md-5 my-auto border border-light">
+            <div class="col col-md-5 border border-light">
                 <div>
-                    <h1 class="display-4 logo-font text-black">
-                        Best Seller!
+                    <h1 class="display-4 logo-font text-yellow">
+                        The best American Ales Delivered direct to your door
                     </h1>
                     <div class="my-5">
                         <p>
-                            <a href="" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Best sellers</a>
+                            <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>            
+    </div>
+</section>
+<section>
+    <div class= "container my-5">
+        <h3 class="text-white">Buy Craft Beer Online at American Ale House</h3>
+        <div class="col bg-white">
+            <h4 class="text-red">The UK's Number One online <b>American Ale</b> shop</h4>
+            <p class="text-red">Here at <em>American Ale House</em>, we're all about great American Ales and we love hunting out the very best <strong>craft beers</strong> and ales from all over America just for you!
+                It is our mission to bring delicious American Ales to the homes of discerning drinkers across the Uk. We want you to share our love for all the amazing <strong>American Ales</strong> out there and our goal is to make sure you get the best <em>quality</em> <strong>beer</strong> to your door with the best quality service.
+                We take care of all the boring stuff so you can get to what is important as fast as possible: sampling some <em>tasty</em> <strong>American Ales</strong>!
+                <strong>American beers</strong>, there's something for every taste!
+                When you <strong>buy beer online</strong> at American Ale House, you not only benefit from <strong>FREE DELIVERY</strong> (Restrictions apply) on all orders over £50, our quick turnaround means you will never be caught short of cracking beer.
+                <a href="{% url 'contact' %}">Contact us</a> to find out more
+            </p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container my-3">
+        <h3 class="text-white">Check Out Our Selection!</h3>
+        <div class="main-carousel" 
+            data-flickity='{ "wrapAround": true, "imagesLoaded": true }'>
+            {% for product in products %}
+            <div class="card-group col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-white">
+                <div class=" card me-2">
+                    <div class="card-img-top">
+                        {% if product.image %}
+                            <a href="{% url 'product_detail' product.id %}">
+                                <img class="card-img-top img-fluid" 
+                                    src="{{ product.image.url }}" alt="{{ product.name }}">
+                            </a>
+                        {% else %}
+                            <a href="{% url 'product_detail' product.id %}">
+                                <img class="card-img-top img-fluid" 
+                                    src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="card-body pt-1 ps-0 pb-0">
+                        <p class="card-text mb-0">{{ product.name }}</p>
+                    </div>
+                    <div class="card-footer bg-white ps-0 pt-0 border-0 text-left">
+                        <div class="row">
+                            <div class="col">
+                                <p class="mb-0 text-start fw-bold">€{{ product.price }}</p>
+                                {% if product.rating %}
+                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>
+                                        {{ product.rating }} / 5
+                                    </small>
+                                {% else %}
+                                    <small class="text-muted">No Rating</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>            
 {% endblock %}

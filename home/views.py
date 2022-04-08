@@ -2,12 +2,18 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.core.mail import send_mail
+from products.models import Product
 
 
 def index(request):
     """ A view to return the index page """
+    products = Product.objects.all().order_by('category')
 
-    return render(request, 'home/index.html')
+    context = {
+        'products': products,
+    }
+
+    return render(request, 'home/index.html', context)
 
 
 def faqs(request):
