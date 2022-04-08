@@ -1,4 +1,4 @@
-"""Products Tests"""
+"""Products Tests Models"""
 from django.test import TestCase
 from django.contrib.auth.models import User
 from products.models import Category, Product, ReviewRating

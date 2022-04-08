@@ -42,10 +42,6 @@
                 <h4>Customer Service</h4>
                 <br>
                 <div>
-                    <a class="text-decoration-none text-white" href="{% url 'profile' %}">My account</a>
-                </div>
-                <br>
-                <div>
                     <a class="text-decoration-none text-white" href="{% url 'faqs' %}">FAQ's</a>
                 </div>
                 <br>
@@ -54,7 +50,11 @@
                 </div>
                 <br>
                 <div>
-                    <a class="text-decoration-none text-white" href="">Delivery Info</a>
+                    <a class="text-decoration-none text-white" href="{% url 'account_signup' %}">Register</a>
+                </div>
+                <br>
+                <div>
+                    <a class="text-decoration-none text-white" href="{% url 'account_login' %}">Log In</a>
                 </div>
             </div>
             <div class="col-sm col-md-4">
