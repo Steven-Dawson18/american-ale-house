@@ -1,6 +1,9 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.contrib.messages import get_messages
+from checkout.models import Order
+from profiles.models import UserProfile
 
 
 class TestProfilesViews(TestCase):
@@ -10,11 +13,24 @@ class TestProfilesViews(TestCase):
         """
         Set up test data
         """
-        self.client = Client()
-        self.test_user = User.objects.create_user(
-                        username='test_user',
-                        email="user@alh.com",
-                        password='test_password')
+        testuser = User.objects.create_user(
+            username='test_user',
+            password='test_password',
+            email='test@test.com')
+        testuser.save()
+
+        Order.objects.create(
+            order_number='987654321',
+            user_profile=UserProfile.objects.get(user=testuser),
+            full_name='Test User',
+            email='test@test.com',
+            phone_number='1234567890',
+            country='Test Country',
+            postcode='Test postcode',
+            town_or_city='Test city',
+            street_address1='Test address',
+            county='Test country',
+        )
 
     def test_url_response(self):
         """
@@ -27,9 +43,27 @@ class TestProfilesViews(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_profile_view_uses_correct_template(self):
-        """ Test using correct template """
+        """
+        Test using correct template in profile page
+        """
         login = self.client.login(username='test_user',
                                   password='test_password')
         response = self.client.get(reverse('profile'))
         self.assertTrue(login)
         self.assertTemplateUsed(response, 'profiles/profile.html')
+
+    def test_get_order_detail_page(self):
+        """
+        Test user can see their order history
+        """
+        self.client.login(username='test_user1', password='test_password')
+        test_user = User.objects.get(username='test_user')
+        order = Order.objects.get(email=test_user.email)
+        response = self.client.get('/profile/order_history/' +
+                                   order.order_number)
+        self.assertEqual(response.status_code, 200)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(str(messages[0]),
+                         'This is a past confirmation for '
+                         'order number 987654321. ' +
+                         'A confirmation email was sent on the order date.')
