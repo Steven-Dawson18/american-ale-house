@@ -7,6 +7,23 @@ from .forms import UserProfileForm
 from checkout.models import Order
 
 
+def error_403_view(request, exception):
+    '''403 error view'''
+    return render(request, '403.html', status=403)
+
+
+def error_404_view(request, exception):
+    '''404 error view'''
+    return render(request, '404.html', status=404)
+
+
+def error_500_view(request):
+    """
+    404 error view
+    """
+    return render(request, '500.html', status=500)
+
+
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -19,7 +36,8 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(request,
+                           'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()

@@ -5,6 +5,23 @@ from django.core.mail import send_mail
 from products.models import Product
 
 
+def error_403_view(request, exception):
+    '''403 error view'''
+    return render(request, '403.html', status=403)
+
+
+def error_404_view(request, exception):
+    '''404 error view'''
+    return render(request, '404.html', status=404)
+
+
+def error_500_view(request):
+    """
+    404 error view
+    """
+    return render(request, '500.html', status=500)
+
+
 def index(request):
     """ A view to return the index page """
     products = Product.objects.all().order_by('category')
