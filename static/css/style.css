@@ -387,3 +387,7 @@ Contact
     margin-bottom: 2rem;
     border: none;
 }
+
+.card {
+    height: 50vh;
+}
