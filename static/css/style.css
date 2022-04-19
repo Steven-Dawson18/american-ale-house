@@ -391,3 +391,8 @@ Contact
 .card {
     height: 50vh;
 }
+
+.card-img-top {
+    height: 40vh;
+    width: auto;
+}

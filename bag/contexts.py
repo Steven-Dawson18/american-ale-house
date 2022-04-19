@@ -39,17 +39,17 @@ def bag_contents(request):
     grand_total = delivery + total
 
     if coupon:
+        # coupon_amount = coupon.discount
+        # discount = total*(coupon_amount/Decimal('100'))
         grand_total = delivery + total - coupon.discount
-        # discounted_grand_total = grand_total - coupon.discount
         stripe_total = round(grand_total * 100)
     else:
         grand_total = delivery + total
-        # discounted_grand_total = grand_total
         stripe_total = round(grand_total * 100)
 
     context = {
+        # 'discount': discount,
         'stripe_total': stripe_total,
-        # 'discounted_grand_total': discounted_grand_total,
         'coupon': coupon,
         'bag_items': bag_items,
         'total': total,
