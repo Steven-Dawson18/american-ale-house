@@ -59,16 +59,16 @@
         <div class="main-carousel" data-flickity='{ "wrapAround": true, "imagesLoaded": true }'>
             {% for product in products %}
             <div class="card-group col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-white">
-                <div class="card me-2">
+                <div class="card me-2 h-100">
                     <div class="card-img-top flex-fill">
                         {% if product.image %}
                             <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid" width="100%\9" height="auto"
+                                <img class="card-img-top img-fluid"
                                     src="{{ product.image.url }}" alt="{{ product.name }}">
                             </a>
                         {% else %}
                             <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid" width="100%\9" height="auto"
+                                <img class="card-img-top img-fluid"
                                     src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                             </a>
                         {% endif %}
