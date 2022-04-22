@@ -58,8 +58,8 @@
         <h3 class="text-white">Check Out Our Selection!</h3>
         <div class="main-carousel" data-flickity='{ "wrapAround": true, "imagesLoaded": true }'>
             {% for product in products %}
-            <div class="card-group col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-white py-3">
-                <div class="card me-2">
+            <div class="card-group col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-white">
+                <div class="card me-2 h-100">
                     <div class="card-img-top flex-fill">
                         {% if product.image %}
                             <a href="{% url 'product_detail' product.id %}">
