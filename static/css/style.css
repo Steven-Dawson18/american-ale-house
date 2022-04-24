@@ -221,6 +221,10 @@ div.transbox p {
     .increment-qty, .decrement-qty {
         padding: .25rem .5rem !important;
     }
+
+    .logo-font {
+        font-size: 2rem;
+    }
 }
 
 .overlay {
