@@ -35,7 +35,7 @@ class TestProfilesViews(TestCase):
             discount="20",
         )
 
-    def test_empty_bag(self):
+    def test_empty_bag_error(self):
         """
         Test bag is empty for checkout
         """
