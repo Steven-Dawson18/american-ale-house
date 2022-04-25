@@ -15,7 +15,7 @@ class TestFavouriteModels(TestCase):
         test_user = User.objects.create_user(
             username='test_user', password='test_password')
 
-        product = Product.objects.create(
+        Product.objects.create(
             name='Test Product Name',
             price='16.99',
             description='Test Description',

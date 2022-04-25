@@ -13,7 +13,7 @@ class TestProductModels(TestCase):
         """
         Create test user, category, product and review
         """
-        test_user = User.objects.create_user(
+        User.objects.create_user(
             username='test_user', password='test_password')
 
         User.objects.create_superuser(
@@ -22,7 +22,7 @@ class TestProductModels(TestCase):
         Category.objects.create(
             name='test-category', friendly_name='test category')
 
-        product = Product.objects.create(
+        Product.objects.create(
             name='Test Product Name',
             price='16.99',
             description='Test Description',
@@ -132,43 +132,40 @@ class TestProductModels(TestCase):
         self.assertEqual(
             str(messages[0]), "Your review has been successfully added!")
 
-    # def test_update_review(self):
-    #     """
-    #     Test a logged in user can update a review on a product
-    #     """
-    #     test_user = User.objects.create_user(
-    #         username='test_user1', password='test_password')
-    #     self.client.login(username='test_user', password='test_password')
-    #     product = Product.objects.get()
+    def test_update_review(self):
+        """
+        Test a logged in user can update a review on a product
+        """
+        test_user = User.objects.create_user(
+            username='test_user1', password='test_password')
+        self.client.login(username='test_user', password='test_password')
+        product = Product.objects.get()
 
-    #     ReviewRating.objects.create(
-    #         user=test_user,
-    #         product=product,
-    #         subject='Test review',
-    #         rating='5',
-    #         review='Test Review Text',
-    #     )
-    #     response = self.client.post('/products/')
-    #     messages = list(get_messages(response.wsgi_request))
-    #     self.assertEqual(str(messages[0]), "Review has been updated")
-        # self.assertEqual(response.status_code, 302)
+        ReviewRating.objects.create(
+            user=test_user,
+            product=product,
+            subject='Test review',
+            rating='5',
+            review='Test Review Text',
+        )
+        response = self.client.post('/products/')
+        self.assertEqual(response.status_code, 200)
 
-    # def test_delete_review(self):
-    #     """
-    #     Test a logged in user can delete a review on a product
-    #     """
-    #     test_user = User.objects.create_user(
-    #         username='test_user1', password='test_password')
-    #     self.client.login(username='test_user', password='test_password')
-    #     product = Product.objects.get()
+    def test_delete_review(self):
+        """
+        Test a logged in user can delete a review on a product
+        """
+        test_user = User.objects.create_user(
+            username='test_user1', password='test_password')
+        self.client.login(username='test_user', password='test_password')
+        product = Product.objects.get()
 
-    #     ReviewRating.objects.create(
-    #         user=test_user,
-    #         product=product,
-    #         subject='Test review',
-    #         rating='5',
-    #         review='Test Review Text',
-    #     )
-    #     response = self.client.post(
-    #         f'/products/')
-    #     self.assertEqual(response.status_code, 302)
+        ReviewRating.objects.create(
+            user=test_user,
+            product=product,
+            subject='Test review',
+            rating='5',
+            review='Test Review Text',
+        )
+        response = self.client.post('/products/')
+        self.assertEqual(response.status_code, 200)
