@@ -67,3 +67,30 @@ class TestProfilesViews(TestCase):
                          'This is a past confirmation for '
                          'order number 987654321. ' +
                          'A confirmation email was sent on the order date.')
+
+    def test_default_delivery_information_updates(self):
+        """
+        Test that default delivery info updates
+        """
+        self.client.login(username='test_user',
+                          password='test_password')
+        response = self.client.get(reverse('profile'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed('profiles/profile.html')
+
+        new_data = {
+            'default_phone_number': 'testEdit',
+            'default_street_address1': 'testEdit',
+            'default_town_or_city': 'testEdit',
+            'default_postcode': 'testEdit',
+            'default_county': 'testEdit',
+            'default_country': 'GB'
+        }
+        self.client.post('/profile/', new_data)
+        response = self.client.post('/profile/', new_data)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(messages[0].tags, 'success')
+        self.assertEqual(
+            str(messages[0]), 'Profile updated successfully')
+        self.client.logout()
