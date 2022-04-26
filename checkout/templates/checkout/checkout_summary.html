@@ -59,6 +59,7 @@
                 <hr class="my-0">
                 <div class="row text-black text-right">
                     {% if coupon %}
+                        <!-- displays coupon -->
                         <div class="col-7 offset-5 border p-2">
                             <div class="input-group justify-content-center">Coupon Applied: {{ coupon.code }} </div>
                             <div><a class="btn btn-danger btn-md waves-effect m-0" href="{% url 'remove_coupon' %}">Remove</a></div>
