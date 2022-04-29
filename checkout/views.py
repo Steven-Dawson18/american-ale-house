@@ -1,6 +1,7 @@
 """ Checkout Views """
 from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponse)
+from django.views.decorators.http import require_http_methods
 from django.views.decorators.http import require_POST
 from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
@@ -44,26 +45,24 @@ def get_coupon(request, code):
         return redirect('checkout')
 
 
-class AddCouponView(View):
-    def post(self, request, *args, **kwargs):
-        form = CouponApplyForm(self.request.POST or None)
+@require_http_methods(["GET", "POST"])
+def add_coupon(request):
+    code = request.POST.get('code')
 
-        if form.is_valid():
-            code = form.cleaned_data.get('code')
-            bag = self.request.session.get('bag', {})
-            if not bag:
-                messages.error(
-                    self.request, "There's nothing in your bag at the moment")
-                return redirect(reverse('products'))
+    if not code:
+        messages.error(request, "You didn't enter a coupon code!")
+        return redirect(reverse('checkout_summary'))
 
-            coupon = get_coupon(self.request, code)
-            request.session['coupon_id'] = coupon.id
-
-            messages.success(
-                self.request, "The coupon has been successfully added")
-            return redirect('checkout_summary')
-        else:
-            messages.info(self.request, "That code is not valid")
+    try:
+        coupon = Coupon.objects.get(code=code)
+        request.session['coupon_id'] = coupon.id
+        messages.success(request, f'Coupon code: { code } applied')
+    except Coupon.DoesNotExist:
+        request.session['coupon_id'] = None
+        messages.error(request, f'Coupon code: { code } not accepted')
+        return redirect('checkout_summary')
+    else:
+        return redirect('checkout_summary')
 
 
 def remove_coupon(request):
