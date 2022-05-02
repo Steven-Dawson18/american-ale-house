@@ -217,15 +217,29 @@ def submit_review(request, product_id):
     return redirect(reverse('product_detail', args=[product.id]))
 
 
-class UpdateReviewView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+# Redirect to previous page used from Stackoverflow
+class RedirectToPreviousMixin:
+
+    default_redirect = '/'
+
+    def get(self, request, *args, **kwargs):
+        request.session['previous_page'] = request.META.get(
+            'HTTP_REFERER', self.default_redirect)
+        return super().get(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return self.request.session['previous_page']
+
+
+class UpdateReviewView(RedirectToPreviousMixin, LoginRequiredMixin,
+                       SuccessMessageMixin, UpdateView):
     """
     A view to edit a Review
     """
     model = ReviewRating
     form_class = ReviewForm
     template_name = "products/update_review.html"
-    success_message = "Review has been updated"
-    success_url = reverse_lazy('products')
+    success_message = "Your review has been updated"
 
 
 class ReviewDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):

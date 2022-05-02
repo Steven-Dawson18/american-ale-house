@@ -514,7 +514,7 @@ You will need to install all of the packages listed in the requirements file you
 ## Credits <a name="credits"></a>
 
 ### Code
-
+* I used  this post on stackoverflow to redirect to the previous page for updating a review of a product. This code is comented in the view code. https://stackoverflow.com/questions/62626660/redirect-back-to-previous-page-django
 
 ### Media
 * Images - All images used are taken from google images.
