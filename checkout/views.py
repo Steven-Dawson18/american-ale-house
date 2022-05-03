@@ -3,7 +3,6 @@ from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponse)
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.http import require_POST
-from django.views.generic import View
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.conf import settings

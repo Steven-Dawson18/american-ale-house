@@ -65,3 +65,58 @@ Some of the validator tests show a warning. This warning read - The type attribu
 ![Quantity js](testing_images/quantity-input-jshint-validation.png)<br>
 ![Stripe js](testing_images/stripe-elements-jshint-validation.png)<br>
 * Some JSHint validation results show an unused vairable "$" this is because I was using JQuery. These also were taken from the Boutique Ado material and so I did not alter.
+
+### Python Results:
+#### Home App
+![Home Views](testing_images/home-views.png)<br>
+![Test Home Views](testing_images/home-test-views.png)<br>
+![Home URLS](testing_images/home-urls.png)<br>
+#### Bag App
+![Bag URLS](testing_images/bag-urls.png)<br>
+![Bag Views](testing_images/menu-views-pep8-validation.png)<br>
+![Bag Contexts](testing_images/bag-context.png)<br>
+![Test Bag Views](testing_images/bag-views.png)<br>
+#### Checkout App
+![Checkout Forms](testing_images/checkout-forms.png)<br>
+![Checkout Models](testing_images/checkout-models.png)<br>
+![Test Checkout Models](testing_images/checkout-modesl-tests.png)<br>
+![Checkout Signals](testing_images/checkout-signals.png)<br>
+![Checkout Test Forms](testing_images/checkout-test-forms.png)<br>
+![Checkout URLS](testing_images/checkout-urls.png)<br>
+![Checkout Views](testing_images/checkout-views.png)<br>
+![Test Checkout Views](testing_images/checkout-views-test.png)<br>
+![Checkout Webhook Handler](testing_images/checkout-webhook-handler.png)<br>
+![Checkout Webhooks](testing_images/checkout-webhooks.png)<br>
+#### Favourites App
+![Favourites Models](testing_images/favourites-models.png)<br>
+![Favourites Views](testing_images/favourites-views.png)<br>
+![Test Favourites Models](testing_images/favourites-test-models.png)<br>
+![Test Favourites Views](testing_images/favourites-test-views.png)<br>
+![Favourites URLS](testing_images/favourites-urls.png)<br>
+#### Products App
+![Products Models](testing_images/products-models.png)<br>
+![Products Views](testing_images/products-views.png)<br>
+![Products Forms](testing_images/products-forms.png)<br>
+![Test Products Models](testing_images/products-test-models.png)<br>
+![Test Products Views](testing_images/products-test-views.png)<br>
+![Products URLS](testing_images/products-urls.png)<br>
+![Products widgegts](testing_images/products-widgets.png)<br>
+#### Profiles App
+![Profiles Models](testing_images/profiles-models.png)<br>
+![Profiles Views](testing_images/profiles-views.png)<br>
+![Profiles Forms](testing_images/profiles-forms.png)<br>
+![Test Profiles Models](testing_images/profiles-test-models.png)<br>
+![Test Profiles Views](testing_images/profiles-test-views.png)<br>
+![Profiles URLS](testing_images/profiles-urls.png)<br>
+
+---
+---
+
+## Lighthouse Testing <a name="lighthouse-testing"></a>
+
+After getting the bulk of the site in place, I ran it through Chrome Lighthouse.
+
+![Lighthouse score](testing_images/american-ale-house-lighthouse-testing.png)
+
+---
+---

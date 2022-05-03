@@ -1,4 +1,4 @@
-"""Products Tests Models"""
+"""Products Tests Views"""
 from django.test import TestCase
 from django.contrib.messages import get_messages
 from django.contrib.auth.models import User
