@@ -56,7 +56,7 @@ The live Cockapoo Cafe site can be viewed [here](https://american-ale-house.hero
 26. As a user I can contact the American Ale House via phone or email so that I can make contact on any issues I might have
 27. As a user I can view the sites policy so that I understand how my data will be used
 28. As a user I can follow the business on social media so that I can keep up to date with latest news and offers
-30. As a user I can understand the site meaning when I land on the home page so that I know I am on a site I want to purchase from
+29. As a user I can understand the site meaning when I land on the home page so that I know I am on a site I want to purchase from
 
 
 ## Strategy <a name="strategy"></a>

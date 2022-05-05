@@ -123,16 +123,6 @@ After getting the bulk of the site in place, I ran it through Chrome Lighthouse.
 
 ### Testing User Stories <a name="testing-from-user-stories"></a>
 
-
-22. As a user I can receive discount codes so that I can get free delivery or money off my order
-23. As a user I can see the same navigation menu on each page so that it is easy to understand and use
-24. As a user I can signup to the newsletter so that I receive news and discounts from the site
-25. As a user I can see the sites FAQ's so that rI may get some answers to my questions easily
-26. As a user I can contact the American Ale House via phone or email so that I can make contact on any issues I might have
-27. As a user I can view the sites policy so that I understand how my data will be used
-28. As a user I can follow the business on social media so that I can keep up to date with latest news and offers
-30. As a user I can understand the site meaning when I land on the home page so that I know I am on a site I want to purchase from
-
 1. As a new user I can easily register for the website so that I can purchase products quickly and easily.
 
 ![Site Registration](testing_images/storey-1.png)
@@ -270,31 +260,88 @@ After getting the bulk of the site in place, I ran it through Chrome Lighthouse.
 
 20. As a logged in user I can add or remove a product to my favourites so that it is quick and easy to purchase the item again
 
-21. As a logged in user I can view my profile so that I can add default address and view orders
-
 ![Add or Remove product to to favourites](testing_images/storey-20.png)
 
 * As a logged in user I can add a product to my favourites and remove them by clicking the heart on the product details page. If the user is not logged in they will be asked to log in first. You can also remove the product from the favourites page.
 * This has been tested manually to ensure it works as it should.
 
-22. As a user I can receive discount codes so that I can get free delivery or money off my order
+21. As a logged in user I can view my profile so that I can add default address and view orders
 
-![Add or update personal details in Profiles](testing_images/storey-21.png)
+![Add or update personal details in Profiles](testing_images/storey-22.png)
 
 * As a logged in user I can add or update default delivery information that will make the checkout process faster.
 * This has been tested manually to ensure it works as it should.
 
+22. As a user I can receive discount codes so that I can get free delivery or money off my order
 
-![Add or update personal details in Profiles](testing_images/storey-21.png)
+![Receive discount codes](testing_images/storey-22.png)
 
-* As a logged in user I can add or update default delivery information that will make the checkout process faster.
+* Once signed up for the site the user will receive a code FIRST_TIMER that can be added ar checkout for £5 off their order. Codes will also be able to be sent out in marketing emails.
+* This has been tested manually to ensure it works as it should.
+
+23. As a user I can see the same navigation menu on each page so that it is easy to understand and use
+
+![Site wide navigation](testing_images/storey-23.png)
+
+* The navigation for the site is the same on every page so that it is easy for the user to navigate around
+* This has been tested manually to ensure it works as it should.
+
+24. As a user I can signup to the newsletter so that I receive news and discounts from the site
+
+![Newsletter sign up](testing_images/storey-24.png)
+
+* By entering an email address into the Hop on Board section in the footer a user can sign up to receive the newsletter and get all the news, special offers and discount codes.
+* This has been tested manually to ensure it works as it should.
+
+25. As a user I can see the sites FAQ's so that I may get some answers to my questions easily
+
+![Frequently asked questions Footer](testing_images/storey-25.png)
+![Frequently asked questions Page](testing_images/faq-page.png)
+
+* In the footer on every page there is a link to the frequently asked questions page where the user can get answeres to common questions. If there is no answer for their question they are provided with a link to contact us.
+* This has been tested manually to ensure it works as it should.
+
+26. As a user I can contact the American Ale House via phone or email so that I can make contact on any issues I might have
+
+![Contact us](testing_images/storey-26.png)
+
+* In the footer on every page there is a link to the contact us page. On the page the user will find an address and phone number and email address as well as a geet in touch form that they can fill out to send a direct message to the site owners.
+* This has been tested manually to ensure it works as it should.
+
+27. As a user I can view the sites policy so that I understand how my data will be used
+
+![Site Policy](testing_images/storey-27.png)
+
+* In the footer on every page there is a link to the Site policy. This opens in a separate tab in their browser.
 * This has been tested manually to ensure it works as it should.
 
 28. As a user I can follow the business on social media so that I can keep up to date with latest news and offers
 
 ![Site socials](testing_images/storey-28.png)
+![Site socials Facebook](testing_images/facebook.png)
 
-* The user is able to view the sites social networks by clicking on the icons at the bottom of the page in the footer, this will help keep them uptodate with any offers or news the cafe has. These links will open in a new tab.
+* The user is able to view the sites social networks by clicking on the icons at the bottom of the newsletter signup in the footer, this will help keep them up to date with any offers or news the American Ale House has. These links will open in a new tab. The Facebookpage has been created for the American Ale House and links to the page.
+* This has been tested manually to ensure it works as it should.
+
+29. As a user I can understand the site meaning when I land on the home page so that I know I am on a site I want to purchase from
+
+![Site Meaning](testing_images/storey-29.png)
+
+* It is obvious what the site is about as soon as a new user lands on the site. There is a background image that is linked to the sites purpose of Beer and the site name is very descriptive. The main tesx on the home page also clearly states what the site is about.
+* This has been tested manually to ensure it works as it should.
+
+30. As a User/admin I can be notified of my actions so that I know if my actions have been successful or not
+
+![User notifications](testing_images/storey-30.png)
+
+* Users are notified with messages so they know if they have been successful or not, For example if the user is adding a product to their bag , as in the picture above, they will get a success message.
+* This has been tested manually to ensure it works as it should.
+
+31. As a user I can view the footer on different devices so that I can still see all the content
+
+![Responsive Footer](testing_images/storey-31.png)
+
+* The footer is responsive to the size of the devise it is being viewed on. Customer services, contact us and opening hours are side by side  and stack on smaller devices.
 * This has been tested manually to ensure it works as it should.
 
 ---
