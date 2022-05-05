@@ -346,3 +346,86 @@ After getting the bulk of the site in place, I ran it through Chrome Lighthouse.
 
 ---
 ---
+## Automated Testing <a name="testing-automated-tests"></a>
+![Automated Tests](testing_images/automated-tests.png)
+
+Automated Unit Testing was carried out with Djangos testing tools and written to cover as much of the site as possible. Below is an overview of each app and what was tested:
+
+### Home App
+
++ Views
+   + test that the home view works
+   + test that the contact view works
+   + test that the email sends in contact view
+   + test that faq view works
+
+### Bag App
+
++ Views
+   + Test that all users can view the bag page
+   + Test that all users can add a product to the bag
+   + Test that all users can update a product on the bag
+   + Test that all users can remove a product from the bag
+  
+
+### Checkout App
+
++ Models
+   + Test the order number string
+   + Test the Coupon code
+
++ Views
+   + Test that the user gets an error message if they try to checkout with an empty bag
+
++ Forms
+   + Test the form does not submit without full_name field
+   + Test the form does not submit without email field
+   + Test the form does not submit without phone_number
+   + Test the form does not submit without country field
+   + Test the form does not submit without town_or_city field
+   + Test the form does not submit without street_address field
+   
+### Favourites App
+
++ Models
+   + Test tests the favourites str method
+
++ Views
+   + Tests the user can view their favourites page
+   + Test for adding a product to favourites
+   + Test remove a product from the users favourites
+
+### Products App
+
++ Models
+   + Test model returns Category name and friendly name as a string
+   + Test model returns Product name as a string
+
++ Views
+   + Check users are set up
+   + Test URL response success
+   + Test users can view all products
+   + Test users can view the Product details page
+   + Test superuser can access the add a product page
+   + Test non superuser can't access the add a product page
+   + Test a superuser can delete a product
+   + Test a non superuser can't delete a product
+   + Test a logged in user can add a review to a product
+   + Test a logged in user can update a review on a product
+   + Test a logged in user can delete a review on a product
+
+### Profiles App
+
++ Models
+   + tests the users profile username returned as a string
+
++ Views
+   + Test logged in user can access their profile page
+   + Test using correct template in profile page
+   + Test user can see their order history
+   + Test that default delivery info updates
+
+---
+---
+
+#

@@ -57,6 +57,8 @@ The live Cockapoo Cafe site can be viewed [here](https://american-ale-house.hero
 27. As a user I can view the sites policy so that I understand how my data will be used
 28. As a user I can follow the business on social media so that I can keep up to date with latest news and offers
 29. As a user I can understand the site meaning when I land on the home page so that I know I am on a site I want to purchase from
+30. As a User/admin I can be notified of my actions so that I know if my actions have been successful or not
+31. As a user I can view the footer on different devices so that I can still see all the content
 
 
 ## Strategy <a name="strategy"></a>
@@ -208,6 +210,20 @@ Click to see wireframes:
 
 + Upon registering, the user is redirected to a new page confirming their subscription. The site owner can now see the new subscriber on their audience dashboard, and new campaigns will be sent to them too.
 
++ Once a user has signed up they will receive a discount code to apply at checkout.
+
++ I have searched similar websites and google gor good key words to apply to the site for SEO purposes:
+
+- Beer
+- Ale
+- Larger
+- Draught
+- American Ale
+
+- THE BEST AMERICAN ALES DELIVERED DIRECT TO YOUR DOOR
+
+- I have used the meta description and keywords to improve the SEO
+
 ### Surface
 
 * Colours
@@ -337,7 +353,8 @@ The chosen fonts were Lobster for headings and navbar and Open Sans for lists, b
 
 
 ### Future Features
-* Implementation of a site blog
+* Implementation of a site blog.
+* Allow for admin to create discound codes and manage on site.
 
 ## Technologies Used <a name="tech"></a>
 
@@ -406,7 +423,6 @@ CSS Code must pass through the [W3C CSS Validator](https://jigsaw.w3.org/css-val
 JavaScript code must pass through the [JSHint Validator](https://jshint.com/).
 
 Python Code must pass through [PEP8 Validator](http://pep8online.com/)
-
 
 The website was extensively tested as it was developed using:
 * print().
@@ -514,6 +530,7 @@ You will need to install all of the packages listed in the requirements file you
 ## Credits <a name="credits"></a>
 
 ### Code
+* The project is based on the Boutique Ado project by the Code Institute and was used as a basse for my project (https://github.com/Code-Institute-Solutions/boutique_ado_v1/)
 * I used  this post on stackoverflow to redirect to the previous page for updating a review of a product. This code is comented in the view code. https://stackoverflow.com/questions/62626660/redirect-back-to-previous-page-django
 
 ### Media

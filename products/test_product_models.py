@@ -42,7 +42,7 @@ class TestProductModels(TestCase):
 
     def test_string_method_of_product_returns_name(self):
         """
-        Test model returns Category name and friendly name as a string
+        Test model returns Product name as a string
         """
         product = Product.objects.get(name='Test Product Name')
         self.assertEqual((product.__str__()), product.name)

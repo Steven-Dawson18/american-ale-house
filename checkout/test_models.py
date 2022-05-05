@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from .models import Order, Coupon
 
 
-class TestProfilesViews(TestCase):
-    """ Class to test the profiles views """
+class TestCheckoutModels(TestCase):
+    """ Class to test the checkout Models """
 
     def setUp(self):
         """

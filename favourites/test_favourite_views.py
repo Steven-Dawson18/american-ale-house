@@ -23,7 +23,7 @@ class TestFavouritesViews(TestCase):
 
     def test_get_product_favourites_page(self):
         """
-        This test tests the user can view theer favourites page
+        This test tests the user can view their favourites page
         """
         self.client.login(username='test_user', password='test_password')
         response = self.client.get('/favourites/')

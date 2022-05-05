@@ -5,8 +5,8 @@ from django.contrib.messages import get_messages
 from .models import Order, Coupon
 
 
-class TestProfilesViews(TestCase):
-    """ Class to test the profiles views """
+class TestCheckoutViews(TestCase):
+    """ Class to test the Checkout views """
 
     def setUp(self):
         """
