@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}You have confirmed {{email}}.{% endblocktrans %}
+{% blocktrans %}You have confirmed {{email}} Enter the code FIRST_TIMER at checkout fot £5 off your first order.{% endblocktrans %}
