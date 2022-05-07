@@ -2,8 +2,6 @@
 
 {% load static %}
 
-{% block content %}
-
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -12,69 +10,71 @@
     </div>
 {% endblock %}
 
+{% block content %}
+
     <div class="container my-5">
         <div class="col text-center">
                 <h2 class="logo-font text-white">Contact Us</h2>
         </div>
-        <div class="col-12 my-5 bg-light p-2">
-            <!-- Contact Information -->
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    <div class="contact-information">
-                        <h5>Address</h5>
-                        <p>American Ale House</p>
-                        <p>Unit 1</p>
-                        <p>Ale Street</p>
-                        <p>AL3 3LA</p>
-                        <p>England</p>
-                        <h5>Phone</h5>
-                        <p>098 765 43210</p>
-                        <h5>Email</h5>
-                        <p class="mb-0">admin@ale-house.com</p>
-                    </div>
-                </div>
-                <!-- Contact Form -->
-                <div class="col-12 col-md-8">
-                    <div class="contact-form">
-                        <!-- Section Heading -->
-                        <div class="section-heading">
-                            <h2>Get In Touch</h2>
-                            <div class="line"></div>
-                        </div>
-                        <!-- Form -->
-                        <form action="{% url 'contact' %}" class="contact-form" method="POST">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="text" name="message-name" class="form-control mb-30" placeholder="Your Name" pattern="[A-Za-z ]{1,32}" required>
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="email" name="emailaddress" class="form-control mb-30" placeholder="Your Email" required>
-                                </div>
-                                <div class="col-12">
-                                    <textarea name="message" class="form-control mb-30" placeholder="Your Message" required></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="menu-btn">Send Message</button>
-                                </div>
-                                <div id="messages" class="hide"></div>
-                            </div>
-                        </form>
-                    </div>
+    </div>
+    <div class="col-12 my-5 bg-light p-2">
+        <!-- Contact Information -->
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="contact-information">
+                    <h5>Address</h5>
+                    <p>American Ale House</p>
+                    <p>Unit 1</p>
+                    <p>Ale Street</p>
+                    <p>AL3 3LA</p>
+                    <p>England</p>
+                    <h5>Phone</h5>
+                    <p>098 765 43210</p>
+                    <h5>Email</h5>
+                    <p class="mb-0">admin@ale-house.com</p>
                 </div>
             </div>
-            <!-- Opening hours -->
-            <div class="col-12">
-                <div class="opening-hours mt-2">
-                    <h2>Opening hours</h2>
-                    <p>Monday - 9am - 4:30pm</p>
-                    <p>Tuesday - 9am - 4:30pm</p>
-                    <p>Wednesday - 9am - 4:30pm</p>
-                    <p>Thursday - 9am - 4:30pm</p>
-                    <p>Friday - 9am - 4:30pm</p>
-                    <p>Saturday - 9am - 12pm</p>
-                    <p>Sunday - Closed</p>
+            <!-- Contact Form -->
+            <div class="col-12 col-md-8">
+                <div class="contact-form">
+                    <!-- Section Heading -->
+                    <div class="section-heading">
+                        <h2>Get In Touch</h2>
+                        <div class="line"></div>
+                    </div>
+                    <!-- Form -->
+                    <form action="{% url 'contact' %}" class="contact-form" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input type="text" name="message-name" class="form-control mb-30" placeholder="Your Name" pattern="[A-Za-z ]{1,32}" required>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="email" name="emailaddress" class="form-control mb-30" placeholder="Your Email" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" class="form-control mb-30" placeholder="Your Message" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="menu-btn">Send Message</button>
+                            </div>
+                            <div id="messages" class="hide"></div>
+                        </div>
+                    </form>
                 </div>
+            </div>
+        </div>
+        <!-- Opening hours -->
+        <div class="col-12">
+            <div class="opening-hours mt-2">
+                <h2>Opening hours</h2>
+                <p>Monday - 9am - 4:30pm</p>
+                <p>Tuesday - 9am - 4:30pm</p>
+                <p>Wednesday - 9am - 4:30pm</p>
+                <p>Thursday - 9am - 4:30pm</p>
+                <p>Friday - 9am - 4:30pm</p>
+                <p>Saturday - 9am - 12pm</p>
+                <p>Sunday - Closed</p>
             </div>
         </div>
     </div>

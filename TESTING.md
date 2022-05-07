@@ -787,3 +787,20 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 
 ---
 ---
+
+### Testing on Devices <a name="responsive-testing"></a>
+
+* I have tested the deployed Heroku app on different devices such as Macbook Pro, Samsung Galaxy Tab and iphone. Any issues found have been fixed and reported in the bugs section. I no longer see issues with the site working on them.
+
+### Testing on different browsers
+* I have tested the site on google chrome web browser and all works well.
+* I have tested the site on Safari web browser and all works well.
+* I have tested the site on Opera web browser and all works well.
+* I have tested the site on Firefox web browser and all works well.
+
+### Exploratory Testing
+* A session was held with a sample of testers who were asked to test the site. Testers were asked to test on mobile devices as well as their home computers and report any issues or recomendations.
+
+* Tester 1 - Thought the site was easy to use and navigate around. They commented that it was easy to search , filter therough products and liked the carosel on the home page. An issue was pointed out on the Favourites page where the product cards were really distorted and small when only one product. I have rectified this issue. They felt it was easy to add products to the basket and checkout was easy to do and liked that they could apply a coupon.
+
+---
