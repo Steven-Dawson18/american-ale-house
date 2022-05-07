@@ -614,3 +614,176 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 |Checkout button        |Click|Redirect to checkout summary page  |Pass|
 
 ---
+
+### **Checkout Summary Page**
+
+| Element               |Action|Expected Result              |Pass/Fail|
+|:-------------         |:----|:-----                             |:---|
+|Coupon apply form      |Enter|Coupon applied Toast message       |Pass|
+|                       |Valid|Discount applied to Grand Total    |Pass|
+|                       |Valid|Discount applied shown             |Pass|
+|                       |Valid|Discount remove button shown       |Pass|
+|Discount remove button |Click|Discount removed                   |Pass|
+|                       |     |Discount removed from Grand Total  |Pass|
+|                       |     |Coupon removed Toast message       |Pass|
+|                    |Invalid|Error coupon not valid Toast message|Pass|
+|Checkout button        |Click|Redirect to checkout page          |Pass|
+
+
+---
+
+### **Checkout Page**
+
+| Element                   | Action           | Expected Result                      | Pass/Fail |
+|:-------------             |:-----------------|:-----                                     |:-----|
+|Form fields                |On load |fields populated with user default info              |Pass  |
+|(if user logged in)        |        |(if previously saved)                                |Pass  |
+|Text Input(if required)    |Leave blank|On submit:form won't submit                       |Pass  |
+|                           |                  |error message on invalid field(s)          |Pass  |
+|                           |Fill in correctly |On submit: form submits                    |Pass  |
+|Phone number Input         |Leave blank       |On submit:form won't submit                |Pass  |
+|                           |                  |error message on field                     |Pass  |
+|Email Input                |Leave blank       |On submit:form won't submit                |Pass  |
+|                           |                  |error message on field                     |Pass  |
+|                           |Fill in correctly |On submit: form submits                    |Pass  |
+|Form country Dropdown      |Click             |Show dropdown options                      |Pass  |
+|Save to profile checkbox   |On page           |(user logged in) Shown                     |Pass  |
+|                           |On page           |(user not logged in) Not shown             |Pass  |
+|                           |Checked           |On submit:Delivery information saved       |Pass  |
+|                           |                  |to user profile                            |Pass  |
+|                           |Unchecked         |On submit:Delivery information not saved   |Pass  |
+|                           |                  |to user profile                            |Pass  |
+|Payment card input         |Invalid card No.  |Error message on field                     |Pass  |
+|                           |Invalid card date |Error message on field                     |Pass  |
+|Adjust Bag button          |Click             |Redirect to bag page                       |Pass  |
+|Complete Order button      |Click             |Form won't submit                          |Pass  |
+|(form invalid)             |                  |                                           |      |
+|                           |                  |Error message on invalid fields            |Pass  |
+|Complete Order button      |Click             |                                           |      |
+|(form valid)               |Payment succeeds  |loading screen reappears                   |Pass  |
+|                           |                  |form submits                               |Pass  |
+|                           |                  |redirect to checkout success page          |Pass  |
+|                           |(user logged in)  |order saved to user profile                |Pass  |
+|                           |Payment failed    |Loading animation appears                  |Pass  |
+|                           |                  |form won't submit                          |Pass  |
+|                           |                  |error message at bottom of form            |Pass  |
+|              |Payment Requires authentication|Loading animation appears                  |Pass  |
+|                           |                  |Authentication box appears                 |Pass  |
+|Fail Authentication button |Click             |Authentication box closes                  |Pass  |
+|                           |                  |User directed back to form                 |Pass  |
+|                           |                  |error message at bottom of form            |Pass  |
+|Complete Authentication button|Click          |loading screen reappears                   |Pass  |
+|                           |                  |form submits                               |Pass  |
+|                           |                  |redirect to order confirmation page        |Pass  |
+|                           |(user logged in)  |order saved to user profile                |Pass  |
+
+---
+
+### **Checkout Success Page**
+
+| Element                   | Action | Expected Result         | Pass/Fail |
+|:-------------             |:-------|:-----                        |:-----|
+|Shop Again! button         |Click   |Redirect to products page       |Pass|
+
+---
+
+### **Profile Page**
+
+| Element                   | Action           | Expected Result                      | Pass/Fail |
+|:-------------             |:-----------------|:------------------------------------------|:-----|
+|Form fields         |On load |fields populated with user default info(if previously saved)|Pass  |
+|All input fields           |Leave blank       |On submit: form submits                    |Pass  |
+|                           |Just whitespace   |On submit: form submits                    |Pass  |
+|                           |Fill in correctly |On submit: form submits                    |Pass  |
+|Form Dropdown              |Click             |Show dropdown options                      |Pass  |
+|Update button              |Click             |Form submits                               |Pass  |
+|                           |                  |Form updated toast appears                 |Pass  |
+|Previous order number      |Click             |Redirect to previous order page            |Pass  |
+* *Form fields are not required and don't validate the same as the checkout form*
+* *If a user inputs incorrect profile information on the checkout page, it will be validatied there*
+
+---
+
+### **Previous Order Page**
+
+| Element                   | Action | Expected Result           |Pass/Fail|
+|:-------------             |:----|:-----                            |:---|
+|Toast                      |loads|Previous order info toast appears |    |
+|Back to Profile button     |Click|Redirect to profile page          |Pass|
+
+---
+
+### **FAQ's Page**
+
+| Element                   | Action | Expected Result          |Pass/Fail|
+|:-------------             |:----|:-----                           |:----|
+|Home button                |Click|Redirect to Home page             |Pass|
+|Contact link in answer     |Click|Redirect to contact page          |Pass|
+
+---
+
+### **Contact Page**
+| Element               |Action| Expected Result            | Pass/Fail|
+|:-------------         |:-----|:-----                            |:---|
+|Sent Email Form        |Filled|Fields must be filled in          |Pass|
+|                       |      |                                  |    |
+|Send Message Button    |Click |Submits contact form and email    |Pass|
+|                       |      |is sent to site owner             |Pass|
+|                       |      |Message appears to inform user    |Pass|
+|                       |      |the form was sent                 |Pass|
+
+---
+
+### **Allauth Pages**
+
+| Element                   | Action | Expected Result                   | Pass/Fail |
+|:-------------             |:-------|:---------------------------------------|:-----|
+|**Register**               |        |                                        |      |
+|Sign in link               |Click   |Redirect to sign in page                |Pass  |
+|*Form*                     |        |                                        |      |
+|Email field                |Fill in |On submit: form wont'submit             |Pass  |
+|(incorrect format)         |        |Error message on invalid field          |Pass  |
+|(correct format)           |Fill in |On submit: form submit                  |Pass  |
+|(email already used)       |Fill in |On submit: form wont'submit             |Pass  |
+|                           |        |Error message on invalid field          |Pass  |
+|(email not already used)   |Fill in |On submit: form submit                  |Pass  |
+|Username field             |Fill in |On submit: form submit                  |Pass  |
+|(correct format)           |        |                                        |Pass  |
+|(username already used)    |Fill in|On submit: form wont'submit              |Pass  |
+|                           |        |Error message on invalid field          |Pass  |
+|(username not already used)|Fill in|On submit: form submit                   |Pass  |
+|Password field             |Fill in |On submit: form wont'submit             |Pass  |
+|(incorrect format)         |        |error message on invalid field          |Pass  |
+|(correct format)           |Fill in |On submit: form submits                 |Pass  |
+|(passwords don't match)    |Fill in|On submit: form wont'submit              |Pass  |
+|                           |        |error message on invalid field          |Pass  |
+|(passwords match)          |Fill in |On submit: form submit                  |Pass  |
+|Sign Up button(form invalid)|Click  |Form wont'submit                        |Pass  |
+|                           |        |error message on invalid fields         |Pass  |
+|Sign Up button(form valid) |Click   |Form submit                             |Pass  |
+|                           |        |redirect to email verification page     |Pass  |
+|                           |        |email sent to user                      |Pass  |
+|**Email Verification**     |        |                                        |      |
+|Follow link from email     |Click   |redirect to confirm email page          |Pass  |
+|Confirm button             |Click   |redirect to log in page                 |Pass  |
+|                           |        |email confirmation toast appears        |Pass  |
+|                           |        |with discount coupon code               |Pass  |
+|**Login**                  |        |                                        |      |
+|Sign up link               |Click   |Redirect to sign up page                |Pass  |
+|*Form*                     |        |                                        |      |
+|Username Field             |Fill in|On submit:form won't submit              |Pass  |
+|(wrong username)           |        |error message for username/password     |Pass  |
+|Password Field             |Fill in|On submit:form won't submit              |Pass  |
+|(wrong password)           |        |error message for username/password     |Pass  |
+|Forgot Password button     |Click   |redirect to password reset page         |Pass  |
+|Sign In button(form invalid)|Click  |form won't submit                       |Pass  |
+|                           |        |error message on invalid field(s)       |Pass  |
+|Sign In button(form valid) |Click   |form submit                             |Pass  |
+|                           |        |redirect to home page                   |Pass  |
+|                           |        |sign in confirmation toast appears      |Pass  |
+|**Logout Confirmation**    |        |                                        |      |
+|Sign out button            |Click   |Redirect to homepage                    |Pass  |
+|                           |        |Sign out confirmation toast appears     |Pass  |
+
+---
+---
