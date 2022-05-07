@@ -428,4 +428,68 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 ---
 ---
 
-#
+## Manually Testing Functionality <a name="manually-testing-functionality"></a>
+### **Navigation**
+
+|Element               |Action|Expected Result               |Pass/Fail|
+|:-------------         |:----|:----------------------------------|:---|
+| **NavBar**            |                                         |    |
+|Site Name              |Click|Redirect to home                   |Pass|
+|My profile Dropdown    |Click|Open profile dropdown              |Pass|
+|Register Link          |Click|Redirect to register page          |Pass|
+|                       |     |(Not visible if user logged in)    |Pass|
+|Log In Link            |Click|Redirect to log in page            |Pass|
+|                       |     |(Not visible if user logged in)    |Pass|
+|Product Management Link|Click|Redirect to add_product page       |Pass|
+|                       |     |(Only visble if admin logged in)   |Pass|
+|My Profile Link        |Click|Redirect to user profile page      |Pass|
+|                       |     |(Only visble if user in session)   |Pass|
+|My Favourites Link     |Click|Redirect to user favourites page   |Pass|
+|                       |     |(Only visble if user logged in)    |Pass|
+|Logout Link            |Click|Redirect to logout confirm  page   |Pass|
+|                       |     |(Only visble if user logged in)    |Pass|
+|Bag Link               |Click|Redirect to bag page               |Pass|
+|Search Bar             |     |Enter key words to search products |Pass|
+| **Mobile Nav**        |     |                                   |    |
+|Hamburger Icon         |Click|Open Dropdown                      |Pass|
+|- Home                 |Click|Redirect to home                   |Pass|
+|- All Products Dropdown|Click|Displays links to All products     |Pass|
+|                       |     |and filtered options and redirects |Pass|
+|- All American Beers   |Click|Displays links to the different    |Pass|
+|Dropdown               |     |styles of beers and redirects      |Pass|
+|                       |     |                                   |Pass|
+|Search Link            |Click|Enter key words to search products |Pass|
+|My Account Dropdown    |Click|Open account dropdown              |Pass|
+|Register Link          |Click|Redirect to register page          |Pass|
+|                       |     |(Not visible if user logged in)    |Pass|
+|Log In Link            |Click|Redirect to log in page            |Pass|
+|                       |     |(Not visible if user logged in)    |Pass|
+|Product Management Link|Click|Redirect to add_product page       |Pass|
+|                       |     |(Only visble if admin logged in)   |Pass|
+|My Favourites Link     |Click|Redirect to user favourites page   |Pass|
+|                       |     |(Only visble if user logged in)    |Pass|
+|My Profile Link        |Click|Redirect to user profile page      |Pass|
+|                       |     |(Only visble if user logged in)    |Pass|
+|Logout Link            |Click|Redirect to logout confirm  page   |Pass|
+|                       |     |(Only visble if user logged in)    |Pass|
+|Bag Link               |Click|Redirect to bag page               |Pass|
+| **MainNav**           |     |                                   |    |
+|All Products           |Click|Displays links to All products     |Pass|
+|Dropdown               |     |and filtered options and redirects |Pass|
+|American Beers         |Click|Displays links to the different    |Pass|
+|Dropdown               |     |styles of beers and redirects      |Pass|
+| **Footer**            |     |                                   |    |
+|*Customer Services*    |     |                                   |    |
+|FAQ's Link             |Click|Redirect to FAQ's page.            |Pass|
+|Site Policy Link       |Click|Opens new tab to display policy    |Pass|
+|Log in Link            |Click|Redirect to login page             |Pass|
+|Register Link          |Click|Redirect to signup page            |Pass|
+|*Contact us*           |     |                                   |    |
+|Contact Us Link        |Click|Redirect to contact page           |Pass|
+|*Mailchimp subscribe*  |     |                                   |    |
+|Subscribe to newsletter|Click|Enter email to subscribe to site   |Pass|
+|*Socials*              |     |                                   |    |
+|Facebook Link          |Click|Open on external page (live page)  |Pass|
+|Instagram Link         |Click|Open on external page              |Pass|
+|LinkedIn               |Click|Open on external page              |Pass|
+|Twitter Link           |Click|Open on external page              |Pass|
