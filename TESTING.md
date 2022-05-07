@@ -564,3 +564,53 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 |                       |     |Error messages on invalid fields   |Pass|
 
 ---
+
+### **Edit Product Page**
+
+| Element               |Action| Expected Result             |Pass/Fail|
+|:-------------         |:----|:-----                             |:---|
+|Form Dropdown          |Click|Show dropdown category options     |Pass|
+|Name field             |Enter|Field must be filled in or warning |Pass|
+|Description field      |Enter|Field must be filled in or warning |Pass|
+|Price field            |Enter|Field must be filled in or warning |Pass|
+|Rating field           |Enter|Field must be filled in or warning |Pass|
+|Abv field              |Enter|Field not needed to be filled      |Pass|
+|Image select button    |Click|Open device storage                |Pass|
+|                       |     |Chosen image name displayed        |Pass|
+|                       |     |If no image set, placeholder set   |Pass|
+|Cancel button          |Click|Redirect to products page          |Pass|
+|Update Product button  |Click|Form submit                        |Pass|
+|                       |     |Redirect to product detail page    |Pass|
+|                       |     |Product uploaded toast appears     |Pass|
+|Update Product button  |Click|Form doesn't submit                |Pass|
+|                       |     |Error messages on invalid fields   |Pass|
+|Toast Alert            |     |Alert you are editing product      |Pass|
+
+---
+
+### **Delete Product**
+
+| Element               |Action| Expected Result             |Pass/Fail|
+|:-------------         |:----|:-----                             |:---|
+|Delete product         |Click|click delete button and product is |Pass|
+|                       |     |deleted                            |    |
+
+---
+
+### **Bag Page**
+
+| Element               |Action|Expected Result               |Pass/Fail|
+|:-------------         |:----|:-----                             |:---|
+|**No Bag Items**       |     |.                                  |    |
+|Keep Shopping button   |Click|Redirect to products page          |Pass|
+|**Bag Items**          |     |                                   |    |
+|Qty control buttons    |Click|Increase/decrease quantity         |Pass|
+|Update button          |Click|Update bag item quantity           |Pass|
+|                       |     |Updated confirmation toast appears |Pass|
+|Remove button          |Click|Remove item from bag               |Pass|
+|                       |     |Removed confirmation toast appears |Pass|
+|Continue shopping      |Click|Redirect to products page          |Pass|
+|button                 |     |                                   |Pass|
+|Checkout button        |Click|Redirect to checkout summary page  |Pass|
+
+---
