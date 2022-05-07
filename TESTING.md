@@ -493,3 +493,54 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 |Instagram Link         |Click|Open on external page              |Pass|
 |LinkedIn               |Click|Open on external page              |Pass|
 |Twitter Link           |Click|Open on external page              |Pass|
+
+---
+### **Home Page**
+| Element               | Action| Expected Result           | Pass/Fail|
+|:-------------         |:-----|:-----                            |:---|
+|Shop Now button        |Click|Redirects to products page         |Pass|
+|Selection carosel      |Click|Redirects to product details page  |Pass|
+|Selection carosel      |Click|manually rotate through products   |Pass|
+|                       |Seipe|using arrow buttons or swiping     |Pass|
+|                       |     |on phone                           |    |
+
+---
+
+### **Products Page**
+
+| Element               | Action | Expected Result          | Pass/Fail|
+|:-------------         |:-------|:-----                          |:---|
+|'Sort By' Dropdown     |Click|Open 'sort by' options             |Pass|
+|'Sort By' Options (x8) |Click|Re-order products                  |Pass|
+|Product Card           |Click|Redirect to product detail page    |Pass|
+
+---
+
+### **Product Detail Page**
+
+
+| Element               | Action |Expected Result           | Pass/Fail|
+|:-------------         |:-------|:-----                          |:---|
+|Qty control buttons    |Click|Increase/decrease quantity         |Pass|
+|Keep Shopping button   |Click|Redirect to products page          |    |
+|Add to bag button      |Click|Add item to bag                    |Pass|
+|                       |     |Toast Success appears              |Pass|
+|                       |     |Item visible in toast success      |Pass|
+|Rate Product           |Click|Hover over the stars to rate       |Pass|
+|                       |     |and click to confirm               |    |
+|                       |     |(if logged in)                     |    |
+|Review Product         |Enter|Leave a review of the product      |Pass|
+|                       |     |(if logged in)                     |    |
+|                       |     |Redirect to login page if not      |Pass|
+|Read Review            |     |If a review has been left all users|Pass|
+|                       |     |can read them                      |    |
+|Update Review          |Click|If a review is yours update button |Pass|
+|                       |     |visible and redirects to form      |    |
+|Delete Review          |Click|If a review is yours delete button |Pass|
+|                       |     |visible and redirects to form      |    |
+|**If admin logged in:**|     |                                   |    |
+|Edit product button        |Click|Redirect to edit product page  |Pass|
+|Delete product button      |Click|Open delete confirmation modal |Pass|
+
+
+---
