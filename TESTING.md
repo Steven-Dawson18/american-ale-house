@@ -518,7 +518,6 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 
 ### **Product Detail Page**
 
-
 | Element               | Action |Expected Result           | Pass/Fail|
 |:-------------         |:-------|:-----                          |:---|
 |Qty control buttons    |Click|Increase/decrease quantity         |Pass|
@@ -538,9 +537,30 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 |                       |     |visible and redirects to form      |    |
 |Delete Review          |Click|If a review is yours delete button |Pass|
 |                       |     |visible and redirects to form      |    |
-|**If admin logged in:**|     |                                   |    |
-|Edit product button        |Click|Redirect to edit product page  |Pass|
-|Delete product button      |Click|Open delete confirmation modal |Pass|
+|**admin only:**        |     |                                   |    |
+|Edit product button    |Click|Redirect to edit product page      |Pass|
+|Delete product button  |Click|Open delete confirmation modal     |Pass|
 
+---
+
+### **Add Product Page**
+
+| Element               |Action| Expected Result             |Pass/Fail|
+|:-------------         |:----|:-----                             |:---|
+|Form Dropdown          |Click|Show dropdown category options     |Pass|
+|Name field             |Enter|Field must be filled in or warning |Pass|
+|Description field      |Enter|Field must be filled in or warning |Pass|
+|Price field            |Enter|Field must be filled in or warning |Pass|
+|Rating field           |Enter|Field must be filled in or warning |Pass|
+|Abv field              |Enter|Field not needed to be filled      |Pass|
+|Image select button    |Click|Open device storage                |Pass|
+|                       |     |Chosen image name displayed        |Pass|
+|                       |     |If no image set, placeholder set   |Pass|
+|Cancel button          |Click|Redirect to products page          |Pass|
+|Add Product button     |Click|Form submit                        |Pass|
+|                       |     |Redirect to product detail page    |Pass|
+|                       |     |Product uploaded toast appears     |Pass|
+|Add Product button     |Click|Form doesn't submit                |Pass|
+|                       |     |Error messages on invalid fields   |Pass|
 
 ---
