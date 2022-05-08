@@ -532,6 +532,7 @@ You will need to install all of the packages listed in the requirements file you
 ### Code
 * The project is based on the Boutique Ado project by the Code Institute and was used as a basse for my project (https://github.com/Code-Institute-Solutions/boutique_ado_v1/)
 * I used  this post on stackoverflow to redirect to the previous page for updating a review of a product. This code is comented in the view code. https://stackoverflow.com/questions/62626660/redirect-back-to-previous-page-django
+* I used a tutorial to get the stars working for the review rating. I found this on Udemy Django Ecommerce course - https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development
 
 ### Media
 * Images - All images used are taken from google images.

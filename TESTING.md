@@ -801,6 +801,34 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 ### Exploratory Testing
 * A session was held with a sample of testers who were asked to test the site. Testers were asked to test on mobile devices as well as their home computers and report any issues or recomendations.
 
-* Tester 1 - Thought the site was easy to use and navigate around. They commented that it was easy to search , filter therough products and liked the carosel on the home page. An issue was pointed out on the Favourites page where the product cards were really distorted and small when only one product. I have rectified this issue. They felt it was easy to add products to the basket and checkout was easy to do and liked that they could apply a coupon.
+* Tester 1 - Thought the site was easy to use and navigate around. They commented that it was easy to search , filter therough products and liked the carosel on the home page. An issue was pointed out on the Favourites page where the product cards were really distorted and small when only one product. I have rectified this issue. They also found a slight issue with the contact page, where the title had much more space around it than other pages. This has since been fixed. They felt it was easy to add products to the basket and checkout was easy to do and liked that they could apply a coupon.
+
+* Tester 2 - Liked the appearance of the site and thought it ws clear what it was about. They commented on how easy it was to register for the site and liked the touch of receiving a discount code in the toast once logged in. They liked the way the site was layed out and how easy it was to add beers to the basket. They said that the checkout process was nice and easy.They liked the Contact page and how easy it was to make contact with the company.
+
+* Tester 3 - Liked the simplicity of the site. Made purchasing a product quick and easy. The ability to add a product to a favourites section was a plus because it will make it quicker and easier to purchase the Beers you like. Being able to review a product was easy to do and they really liked the way the stars worked. They commented that by reading reviews of products that users have left could make you purchase a product that I haven’t tired before.
 
 ---
+
+## Bugs <a name="bugs-and-fixes"></a>
+
+### Fixed
+* There was an issue with a horrizontal scroll bar on the products page and space on the right of the footer. To solve this (with the help of a user on slack) I removed an unnecessary div with the class of row from the products page.
+* Durning testing of the coupon I found that the coupon would be added if it existed but if an incorrect coupon was input that would throw an error. To solve this I reverted back to a function based view from the class based view.
+* During exploratiory testing a user found that the Favourites page had layout issues with product cards being really small whan only one product there. They also found that with more than one product card on a small screen meant that the cards overlapped the footer. This was an easy fix, adjusting the favourites.html template.
+* During exploratiory testing a user found that the Page title of the Contact page had far to much space around it which pushed the page content quite far down the page. This has been fixed by moving the block page header out and above the block content. This was an error during the creation of the page.
+
+
+### Known issues
+* The Rating stars highlight up to the forth star and not the fith on hover. However when the fith star is selected it is highlighted.
+### Pylint & Flake8 Errors
+* line too long
+In the code that I have written, I have followed the line length rule. However, in Django generated files like migrations and settings, I have left them as they were created. The migration files aren't generally going to be edited by humans so I feel comfortable leaving them as they are.
+
+---
+---
+
+## Credentials <a name="credentials"></a>
+* In order to fully access this site the tester will need access as a superuser. The credentials are as follows:
+Username: admin
+Password: admin
+* To access the site as a normal user the tester can register for the site.
