@@ -1,6 +1,6 @@
 # American Ale House
 
-The live Cockapoo Cafe site can be viewed [here](https://american-ale-house.herokuapp.com/).
+The live American Ale House site can be viewed [here](https://american-ale-house.herokuapp.com/).
 
 ## Contents
 + [Aim and Description](#aim)
@@ -70,7 +70,7 @@ The American Ale House is an ecommerce website allowing users to purchase Americ
 The American Ale House websiteprovides the user the ability to purchaseAmerican brewed beers in the UK. Firstly upone landing on the site you are greeted with an elegant image which clearly protrays the purpose of the site. As a non logged in user you can browse all the products and add the ones you want into your bag ready for checkout. You can checkout by entering all your details and entering a valid credit card. Once your order is complete you will see a confirmation page and a confirmation email will be sent to your email. As a logged in user you will be able to checkout faster as your default address will be in your profile. You will also be able to view your order history and leave reviews on products that you have purchased. The logged in user will also be able to add products to their favourites for a quicker purchase next time. If you sign up to the newsletter you will recieve a Beer token which you will be able to redeem at checkout for a discount on your shop.
 
 ## Database Design <a name="database"></a>
-[Database Schema](/readme_images/)
+[Database Schema](/readme_images/database-design.png)
 
 ## Scope <a name="scope"></a>
 
@@ -193,6 +193,7 @@ Click to see wireframes:
 
 [HomePage](readme_images/home-products-login-wireframes.png)<br>
 [BagPage](readme_images/bag-wireframe.png)<br>
+[ChaeckouPage](readme_images/checkout-summary-wireframe.png)<br>
 [ChaeckouPage](readme_images/checkout-wireframe.png)<br>
 [Favourites](readme_images/faviourites-wireframe.png)<br>
 [ProfilePage](readme_images/profile-wireframe.png)<br>

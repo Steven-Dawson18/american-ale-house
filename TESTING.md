@@ -807,6 +807,8 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 
 * Tester 3 - Liked the simplicity of the site. Made purchasing a product quick and easy. The ability to add a product to a favourites section was a plus because it will make it quicker and easier to purchase the Beers you like. Being able to review a product was easy to do and they really liked the way the stars worked. They commented that by reading reviews of products that users have left could make you purchase a product that I haven’t tired before.
 
+* Tester 4 - This tester was just looking for errors. They found that they could add a rating for a product below 0 and over 5 in the update form. I have solved this by adding form validation. They also found that the Signup page had content which was overlapping the footer. This has since been solved.
+
 ---
 
 ## Bugs <a name="bugs-and-fixes"></a>
@@ -816,6 +818,8 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 * Durning testing of the coupon I found that the coupon would be added if it existed but if an incorrect coupon was input that would throw an error. To solve this I reverted back to a function based view from the class based view.
 * During exploratiory testing a user found that the Favourites page had layout issues with product cards being really small whan only one product there. They also found that with more than one product card on a small screen meant that the cards overlapped the footer. This was an easy fix, adjusting the favourites.html template.
 * During exploratiory testing a user found that the Page title of the Contact page had far to much space around it which pushed the page content quite far down the page. This has been fixed by moving the block page header out and above the block content. This was an error during the creation of the page.
+*  During exploratiory testing a user found that they could enter a rating below 0 and above 5 Ihave fixed this by adding validation in to the forms.py file.
+* During exploratiory testing a user found that the sign up page overlapped the footer on the smallest screens like an IPhone SE. This has been resolved by removing the h-100 class from the allauth base.html container.
 
 
 ### Known issues
