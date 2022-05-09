@@ -1,20 +1,64 @@
 # American Ale House
 
 The live American Ale House site can be viewed [here](https://american-ale-house.herokuapp.com/).
+![American Ale House](readme_images/mockup.png)
 
 ## Contents
 + [Aim and Description](#aim)
-+ [Wireframes](#wireframes)
 + [Databases](#database)
-+ [Epics and User Stories](#user-stories)
-+ [Strategy](#strategy)
 + [Scope](#scope)
++ [Wireframes](#wireframes)
++ [Epics and User Stories](#user-stories)
++ [Agile Methodologies](#agile)
 + [Features](#features)
 + [Marketing](#marketing)
 + [Technologies Used](#tech)
 + [Testing](#testing)
 + [Deployment](#deployment)
 + [Credits](#credits)
+
+### Aim <a name="aim"></a>
+The American Ale House is an ecommerce website allowing users to purchase American brewed beers developed for my Project 5 as part of the Code Institute - Diploma in Software Development (Full stack) Diploma.
+
+### Description
+The American Ale House websiteprovides the user the ability to purchase American brewed beers in the UK. Firstly upon landing on the site you are greeted with an elegant image which clearly protrays the purpose of the site. As a non logged in user you can browse all the products and add the ones you want into your bag ready for checkout. You can checkout by entering all your details and entering a valid credit card. Once your order is complete you will see a confirmation page and a confirmation email will be sent to your email. As a logged in user you will be able to checkout faster as your default address will be in your profile. You will also be able to view your order history and leave reviews on products that you have purchased. The logged in user will also be able to add products to their favourites for a quicker purchase next time. If you sign up to the site you will recieve a Coupon code which you will be able to redeem at checkout for a discount on your shop.
+
+### **User registration not required**
+
+I felt it was important the user was given the option to purchase from the site without having to register for an account. Some sites annoy me when I have to make an account to make a purchase.
+
+If the user doesn't have an account, they are still able to make a purchase, add a delivery address and have a confirmation email sent to them when it has completed. 
+
+
+## Database Design <a name="database"></a>
+[Database Schema](/readme_images/database-design.png)
+
+## Scope <a name="scope"></a>
+
+ * A simple, straightforward, intuitive UX experience;
+ * An explicit content; 
+ * An easy navigation for the user through all the features;
+ * A site that is visually appealing on most devices.
+
+### Structure
+
+* A clear and straightforward layout is in place to ensure users can navigate intuitively and have a leisurely experience.
+* Navbar is fixed on top to facilitate users easily navigating through pages. Small navigation is the same on all pages to ensure easy navigation.
+* Footer is fixed on the bottom with links to social media and newsletter subscription.
+
+### Skeleton <a name="wireframes"></a>
+
+Wireframes created with Balsamiq. The project was developed from initial wireframes
+
+Click to see wireframes:
+
+[HomePage](readme_images/home-products-login-wireframes.png)<br>
+[BagPage](readme_images/bag-wireframe.png)<br>
+[ChaeckoutSumaryPage](readme_images/checkout-summary-wireframe.png)<br>
+[ChaeckoutPage](readme_images/checkout-wireframe.png)<br>
+[Favourites](readme_images/faviourites-wireframe.png)<br>
+[ProfilePage](readme_images/profile-wireframe.png)<br>
+[ReviewPage](readme_images/review-wireframe.png)<br>
 
 ## User Experience
 
@@ -60,27 +104,7 @@ The live American Ale House site can be viewed [here](https://american-ale-house
 30. As a User/admin I can be notified of my actions so that I know if my actions have been successful or not
 31. As a user I can view the footer on different devices so that I can still see all the content
 
-
-## Strategy <a name="strategy"></a>
-
-### Aim <a name="aim"></a>
-The American Ale House is an ecommerce website allowing users to purchase American brewed beers developed for my Project 5 as part of the Code Institute - Diploma in Software Development (Full stack) Diploma.
-
-### Description
-The American Ale House websiteprovides the user the ability to purchaseAmerican brewed beers in the UK. Firstly upone landing on the site you are greeted with an elegant image which clearly protrays the purpose of the site. As a non logged in user you can browse all the products and add the ones you want into your bag ready for checkout. You can checkout by entering all your details and entering a valid credit card. Once your order is complete you will see a confirmation page and a confirmation email will be sent to your email. As a logged in user you will be able to checkout faster as your default address will be in your profile. You will also be able to view your order history and leave reviews on products that you have purchased. The logged in user will also be able to add products to their favourites for a quicker purchase next time. If you sign up to the newsletter you will recieve a Beer token which you will be able to redeem at checkout for a discount on your shop.
-
-## Database Design <a name="database"></a>
-[Database Schema](/readme_images/database-design.png)
-
-## Scope <a name="scope"></a>
-
- * A simple, straightforward, intuitive UX experience;
- * An explicit content; 
- * An easy navigation for the user through all the features;
- * A site that is visually appealing on most devices.
-
-
-### Agile methodology
+### Agile methodology <a name="agile"></a>
 
 * All functionality and development of this project will be managed through GitHub issues, milestones and projects.
 
@@ -178,32 +202,13 @@ The American Ale House websiteprovides the user the ability to purchaseAmerican 
     - Moved css to custom file
     - Moved js to bottom of base.html
 
-
-### Structure
-
-* A clear and straightforward layout is in place to ensure users can navigate intuitively and have a leisurely experience.
-* Navbar is fixed on top to facilitate users easily navigating through pages. Small navigation is the same on all pages to ensure easy navigation.
-* Footer is fixed on the bottom with links to social media and newsletter subscription.
-
-### Skeleton <a name="wireframes"></a>
-
-Wireframes created with Balsamiq. The project was developed from initial wireframes
-
-Click to see wireframes:
-
-[HomePage](readme_images/home-products-login-wireframes.png)<br>
-[BagPage](readme_images/bag-wireframe.png)<br>
-[ChaeckouPage](readme_images/checkout-summary-wireframe.png)<br>
-[ChaeckouPage](readme_images/checkout-wireframe.png)<br>
-[Favourites](readme_images/faviourites-wireframe.png)<br>
-[ProfilePage](readme_images/profile-wireframe.png)<br>
-[ReviewPage](readme_images/review-wireframe.png)<br>
+* The final part of this project such as testing and Fixing bugs was done as and when I could get time around my job and kids.
 
 ## Business Model
 
 + A traditional B2C (Business to Customer) application has been chosen, with a straightforward and user-friendly responsive interface.
 
-+ This online store offers American Ale products to the final customer. 
++ This online store offers American Ale products to the final customer.
 
 ## Marketing <a name="marketing"></a>
 
@@ -396,7 +401,7 @@ The chosen fonts were Lobster for headings and navbar and Open Sans for lists, b
 * [Bootstrap](https://getbootstrap.com/)
     * The Bootstrap framework was used through the website for layout and responsiveness.
 * [Google Fonts](https://fonts.google.com/)
-	* Google fonts are used in the project to import the *Yeseva One* fonts for the nav title.
+	* Google fonts are used in the project to import the fonts for the site.
 * [GitHub](https://github.com/)
 	* GithHub is the hosting site used to store the source code for the Website.
 * [Gitpod](https://gitpod.io/)
@@ -436,6 +441,7 @@ The website was extensively tested as it was developed using:
 * Testing User Stories.
 * Testing scenarios manually.
 * Testing functionallity manually.
+* Automated Testing
 
 This project has been tested throughout its inception. Each input has been thoroughly tested to make sure that any invalid inputs are handled correctly and a response is shown to the user.
 
