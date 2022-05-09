@@ -191,7 +191,12 @@ Wireframes created with Balsamiq. The project was developed from initial wirefra
 
 Click to see wireframes:
 
-[HomePage](media/) TBD <br>
+[HomePage](readme_images/home-products-login-wireframes.png)<br>
+[BagPage](readme_images/bag-wireframe.png)<br>
+[ChaeckouPage](readme_images/checkout-wireframe.png)<br>
+[Favourites](readme_images/faviourites-wireframe.png)<br>
+[ProfilePage](readme_images/profile-wireframe.png)<br>
+[ReviewPage](readme_images/review-wireframe.png)<br>
 
 ## Business Model
 
