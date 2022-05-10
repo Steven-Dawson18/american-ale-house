@@ -807,7 +807,7 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 
 * Tester 3 - Liked the simplicity of the site. Made purchasing a product quick and easy. The ability to add a product to a favourites section was a plus because it will make it quicker and easier to purchase the Beers you like. Being able to review a product was easy to do and they really liked the way the stars worked. They commented that by reading reviews of products that users have left could make you purchase a product that I haven’t tired before.
 
-* Tester 4 - This tester was just looking for errors. They found that they could add a rating for a product below 0 and over 5 in the update form. I have solved this by adding form validation. They also found that the Signup page had content which was overlapping the footer. This has since been solved.
+* Tester 4 - This tester was just looking for errors. They found that they could add a rating for a product below 0 and over 5 in the update form. I have solved this by adding form validation. They also found that the Signup page had content which was overlapping the footer. This has since been solved. They also noted that the admin could delete a product without having to confirm this which could possibly be done by mistake. I have since added this functionally.
 
 ---
 
@@ -820,6 +820,8 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 * During exploratiory testing a user found that the Page title of the Contact page had far to much space around it which pushed the page content quite far down the page. This has been fixed by moving the block page header out and above the block content. This was an error during the creation of the page.
 *  During exploratiory testing a user found that they could enter a rating below 0 and above 5 Ihave fixed this by adding validation in to the forms.py file.
 * During exploratiory testing a user found that the sign up page overlapped the footer on the smallest screens like an IPhone SE. This has been resolved by removing the h-100 class from the allauth base.html container.
+* Page layout was showing a very thin card when you searched for a product and only one came up. I solved this by closing a div with the class of row on line 27 of products.html on line 51.
+* During exploratiory testing a user found that the admin could delete a product without confirming it which is poor ux. I solved this by adding a product delete view.
 
 
 ### Known issues

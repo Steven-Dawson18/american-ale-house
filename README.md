@@ -33,6 +33,40 @@ If the user doesn't have an account, they are still able to make a purchase, add
 ## Database Design <a name="database"></a>
 [Database Schema](/readme_images/database-design.png)
 
+#### **User Account**
+
+This app enables authenticated users to save their information so that when they are logged in the order form is pre-filled, creating an improved user experience. The `UserProfile` model has a one-to-one field that is linked to the Django AllAuth user account, upon logging in the model method `create_or_update_user_profile` creates the profile if it isn't already present in the model.
+
+The second model in this app is `UserWishlist`, this model has two foreign keys, one relating to the `UserProfile` and the other is `Product`. This model stores the products that the user wants to be saved to their wishlist. This information is then displayed in the wishlist view.
+
+#### **Products App**
+
+This app controls the products that are displayed and the reviews and ratings for those products. I have created three models to store the necessary data: `Category`, `Products` & `ReviewRating`.
+
+`Category` stores the various category types of the Ales on sale, this allows the user to filter the products by the category if they are looking for something specific.
+
+`Products` enables individual products to be added to the database in order for them to be purchased via the online shop. Only admin users are able to access this functionality and it can be done from the front end using the `add_product` view. This model has one FK which relates to the second model in this app, the category.
+
+`reviewRating` enables individuals to leave a review of a product so that new users can read these on the product detals page which will help them to decide to purchase or not. This model has one FK which relates to the products model in this app.
+
+#### **Favourites**
+
+The Favourites app is used by a logged in user to store their favourite products which will make finding them easirer the next time they visit the store. There is one model, `Favourites`.
+
+`Favourites` contains a Fk to the product and a one to many field to the user. Once a logged in user adds a product to their favourite it will be stored on that page for them for quick reference when the come back to the store, making purchasing that bit easier and faster.
+
+#### **Checkout**
+
+The checkout app is used for the user to make purchases. This app contains three models, `Order`, `OrderItem` & `Coupon`. 
+
+`OrderItem` contains all of the information regarding the products that have been purchased as part of a specific order. It has a foreign key to `Product` & `Order`, it also contains the quantity purchased of that product and then the item total. This information is used to calculate the total cost for the order. For the product FK I chose to use `on_delete=models.CASCADE`, using the 'original basket' field the admin can still see what the original purchase was.
+
+`Order` contains all of the relevant address information for billing/shipping, a foreign key to the `UserProfile`, a foreign key to the `Coupon`, email & phone number. It also contains information regarding the payment itself, the stripe PID, original bag. Each order has an order number which is automatically generated when a new order is added to the database using `UUID`.
+
+`update_total` calculates the overall total depending on the order items linked to the order, ensuring the value is always correct.
+
+`Coupon` contains a coupon code and a discount value. It is a Fk of the `Order` model and if a code is added on the checkout summary page that exists in the database then the discount will be added.
+
 ## Scope <a name="scope"></a>
 
  * A simple, straightforward, intuitive UX experience;
@@ -509,7 +543,6 @@ EMAIL_PASSWORD - `<Password from email client>`
 * Go to the Gmail account and open the 'Settings' tab.
 * Go to 'Accounts and Imports' > 'Other Google Account Settings'.
 * Go to the 'Security' tab and open 'Signing in to Google'.
-
 * Click on '2-step Verification', click 'Get Started' and turn on 2-step verification following their instructions.
 * Go to 'Security' > 'Signing in to Google' > 'App Passwords'.
 * (You may have to input your account password again) Set 'App' to 'Mail', 'Device' to Other, and name it Django.
@@ -547,7 +580,7 @@ You will need to install all of the packages listed in the requirements file you
 * I used a tutorial to get the stars working for the review rating. I found this on Udemy Django Ecommerce course - https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development
 
 ### Media
-* Images - All images used are taken from google images.
+* Images - Some images used are taken from google images. Other product images were taken from https://denverbeerco.com/.
 
 ### Acknowledgments
 My mentor Antoino Rodriguez for his advice and guidance.

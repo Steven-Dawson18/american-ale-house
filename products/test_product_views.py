@@ -82,32 +82,6 @@ class TestProductModels(TestCase):
                          "Sorry, only store owners can do that.")
         self.assertEqual(response.status_code, 302)
 
-    def test_superuser_can_delete_product(self):
-        """
-        Tests a superuser can delete a product
-        """
-        self.client.login(username='test_super_user', password='test_password')
-        product = Product.objects.get()
-        response = self.client.post(f'/products/delete/{product.id}/')
-        self.assertRedirects(response, '/products/')
-        messages = list(get_messages(response.wsgi_request))
-        self.assertEqual(str(messages[0]), "Product deleted!")
-        deleted_product = Product.objects.filter(id=product.id)
-        self.assertEqual(len(deleted_product), 0)
-
-    def test_non_superuser_can_not_delete_product(self):
-        """
-        Tests a non superuser can't delete a product
-        """
-        self.client.login(username='test_user', password='test_password')
-        product = Product.objects.get()
-        response = self.client.post(f'/products/delete/{product.id}/')
-        self.assertRedirects(response, '/')
-        messages = list(get_messages(response.wsgi_request))
-        self.assertEqual(str(messages[0]), "Sorry, "
-                                           "only store owners can do that.")
-        self.assertEqual(response.status_code, 302)
-
     def test_review_product(self):
         """
         Test a logged in user can add a review to a product
