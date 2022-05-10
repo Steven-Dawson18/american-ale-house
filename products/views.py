@@ -170,14 +170,20 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
-class DeleteProduct(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class DeleteProduct(LoginRequiredMixin, DeleteView):
     '''
     View displays the option to delete the review to the user.
     '''
     model = Product
     template_name = 'products/delete_product.html'
-    success_message = "Product has been deleted"
     success_url = reverse_lazy('products')
+
+    def delete(self, request, *args, **kwargs):
+        """ delete product message """
+        response = super().delete(request, *args, **kwargs)
+        messages.success(
+            self.request, 'The Porduct has been deleted sucessfully!')
+        return response
 
 
 @login_required
@@ -216,7 +222,9 @@ def submit_review(request, product_id):
 
 # Redirect to previous page used from Stackoverflow
 class RedirectToPreviousMixin:
-
+    """
+    A view to Redirect back to page
+    """
     default_redirect = '/'
 
     def get(self, request, *args, **kwargs):
@@ -239,14 +247,20 @@ class UpdateReviewView(RedirectToPreviousMixin, LoginRequiredMixin,
     success_message = "Your review has been updated"
 
 
-class ReviewDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class ReviewDeleteView(LoginRequiredMixin, DeleteView):
     '''
     View displays the option to delete the review to the user.
     '''
     model = ReviewRating
     template_name = 'products/delete_review.html'
-    success_message = "Review has been deleted"
     success_url = reverse_lazy('products')
+
+    def delete(self, request, *args, **kwargs):
+        """ delete product message """
+        response = super().delete(request, *args, **kwargs)
+        messages.success(
+            self.request, 'Your Review has been deleted sucessfully!')
+        return response
 
 
 def get_average_rating(reviews):
