@@ -269,6 +269,8 @@ Click to see wireframes:
 
 - I have used the meta description and keywords to improve the SEO
 
+* There are no sponsored or paid links on this site.
+
 ### Surface
 
 * Colours
@@ -400,6 +402,7 @@ The chosen fonts were Lobster for headings and navbar and Open Sans for lists, b
 ### Future Features
 * Implementation of a site blog.
 * Allow for admin to create discound codes and manage on site.
+* Allow for the creation of different categories on site.
 
 ## Technologies Used <a name="tech"></a>
 

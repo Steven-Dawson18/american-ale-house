@@ -176,28 +176,28 @@ After getting the bulk of the site in place, I ran it through Chrome Lighthouse.
 
 8. As a user I can see reviews and ratings of a product so that I can see other customer opinions on it to help me make up my mind
 
-![Read Product Reviews](testing_images/storey-8-review.png)
+![Read Product Reviews](testing_images/storey-8.png)
 
 * On the product details page a user is able to see any reviews left by other users. This will help customers decisions a little easier to make.
 * This has been tested manually to ensure it works as it should.
 
 9. As a logged in user I can leave a product review once purchased so that I can share my experience with other customers
 
-![Leave a Product Review and Rating](testing_images/storey-8-review.png)
+![Leave a Product Review and Rating](testing_images/storey-8.png)
 
 * As a logged in user I can leave a review and rating of a product on the product details page. Once reviewed I can update/delete my review if I wanted to.
 * This has been tested manually to ensure it works as it should.
 
 10. As a logged in user I can update a product review once purchased so that I can share my experience with other customers.
 
-![Update a Product Review and Rating](testing_images/storey-8-review.png)
+![Update a Product Review and Rating](testing_images/storey-8.png)
 
 * As a logged in user, if I have left a review of a product I can update the review by clicking the update button on the review.
 * This has been tested manually to ensure it works as it should.
 
 11. As a logged in user I can delete my product review so that If I feel it is no longer relevant
 
-![Delete a Product Review and Rating](testing_images/storey-8-review.png)
+![Delete a Product Review and Rating](testing_images/storey-8.png)
 
 * As a logged in user, if I have left a review of a product I can delete the review by clicking the delete button on the review.
 * This has been tested manually to ensure it works as it should.
@@ -347,9 +347,8 @@ After getting the bulk of the site in place, I ran it through Chrome Lighthouse.
 ---
 ---
 ## Automated Testing <a name="testing-automated-tests"></a>
-![Automated Tests](testing_images/automated-tests.png)
 
-Automated Unit Testing was carried out with Djangos testing tools and written to cover as much of the site as possible. Below is an overview of each app and what was tested:
+Automated Unit Testing was carried out with Djangos testing tools and written to cover as much of the site as possible. There are 35 automated tests. Below is an overview of each app and what was tested:
 
 ### Home App
 
@@ -408,11 +407,7 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
    + Test users can view the Product details page
    + Test superuser can access the add a product page
    + Test non superuser can't access the add a product page
-   + Test a superuser can delete a product
-   + Test a non superuser can't delete a product
    + Test a logged in user can add a review to a product
-   + Test a logged in user can update a review on a product
-   + Test a logged in user can delete a review on a product
 
 ### Profiles App
 
@@ -823,6 +818,7 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 * Page layout was showing a very thin card when you searched for a product and only one came up. I solved this by closing a div with the class of row on line 27 of products.html on line 51.
 * During exploratiory testing a user found that the admin could delete a product without confirming it which is poor ux. I solved this by adding a product delete view.
 * During Exploratory testing, a user found that when the admin deletes a product there is no success message. Likewise they also found that when the user deleted a review there was no success message. This is because Django DeleteView does not support the successmessagemixin, therefore I have added a delete function to the views to resolve this issue.
+* During Exploratory testing it was noticed that the bag page had a horrizontal scroll. This was fixed by adding a container div and removing a row div.
 
 
 ### Known issues
