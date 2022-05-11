@@ -4,7 +4,9 @@ from products.models import Product
 
 
 class TestViews(TestCase):
-
+    """
+    Test views in bag app
+    """
     def test_view_bag(self):
         """
         Test user can access the bag

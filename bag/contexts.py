@@ -7,6 +7,7 @@ from checkout.models import Coupon
 
 
 def bag_contents(request):
+    """View that compiles the bag"""
     bag_items = []
     total = 0
     product_count = 0
@@ -39,8 +40,6 @@ def bag_contents(request):
     grand_total = delivery + total
 
     if coupon:
-        # coupon_amount = coupon.discount
-        # discount = total*(coupon_amount/Decimal('100'))
         grand_total = delivery + total - coupon.discount
         stripe_total = round(grand_total * 100)
     else:
@@ -48,7 +47,6 @@ def bag_contents(request):
         stripe_total = round(grand_total * 100)
 
     context = {
-        # 'discount': discount,
         'stripe_total': stripe_total,
         'coupon': coupon,
         'bag_items': bag_items,
