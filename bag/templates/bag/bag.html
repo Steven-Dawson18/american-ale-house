@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="container mb-2">
+    <div class="container mb-2 h-100">
         <div class="col">
             {% if bag_items %}
                 <div class="d-block d-md-none">
@@ -103,7 +103,7 @@
                     </table>
                 </div>
             {% else %}
-                <p class="lead mb-5">Your bag is empty.</p>
+                <p class="lead mb-5">Your bag is empty!</p>
                 <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
                     <span class="icon">
                         <i class="fas fa-chevron-left"></i>

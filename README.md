@@ -589,3 +589,4 @@ You will need to install all of the packages listed in the requirements file you
 My mentor Antoino Rodriguez for his advice and guidance.
 Code Institutes Tutor support for their help and guidance.
 My Sister In Law Krista Dawson for her support and guidance.
+Students of Code Institute on slack that helped with reviewing

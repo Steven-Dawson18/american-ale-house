@@ -804,6 +804,8 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 
 * Tester 4 - This tester was just looking for errors. They found that they could add a rating for a product below 0 and over 5 in the update form. I have solved this by adding form validation. They also found that the Signup page had content which was overlapping the footer. This has since been solved. They also noted that the admin could delete a product without having to confirm this which could possibly be done by mistake. I have since added this functionally. It was noted that the deleteing of reviews and products did not initiate a success message to let the user know that the operation had been successful. I have since solved this.
 
+* Tester 5 - Peer Review - Iplaced my site on the peer review channel on slack and had a review from another student. He commented that the site works well through ordering and confirmation emails. He noted that if there were no contents in the bag the footer could float up. He also commented that the product images would look better if they were centered (something I had already been thinking about) and that the product search parameters that appear above the results would look better if the text were not muted to improve the contrast between the background image.
+
 ---
 
 ## Bugs <a name="bugs-and-fixes"></a>
@@ -819,6 +821,7 @@ Automated Unit Testing was carried out with Djangos testing tools and written to
 * During exploratiory testing a user found that the admin could delete a product without confirming it which is poor ux. I solved this by adding a product delete view.
 * During Exploratory testing, a user found that when the admin deletes a product there is no success message. Likewise they also found that when the user deleted a review there was no success message. This is because Django DeleteView does not support the successmessagemixin, therefore I have added a delete function to the views to resolve this issue.
 * During Exploratory testing it was noticed that the bag page had a horrizontal scroll. This was fixed by adding a container div and removing a row div.
+* After the peer review I fixed the issue with the footer floating up on the bag page if the bag is empty. I also centered the images in the products and made the search text white to contrast against the gackground.
 
 
 ### Known issues
