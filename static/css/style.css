@@ -227,6 +227,20 @@ div.transbox p {
     }
 }
 
+/* push footer down on the bag page on screen sizes 575px */
+@media (min-width: 575px) {
+    .bag-large-container {
+        min-height: 500px;
+    }
+}
+
+/* push footer down on the bag page on screen sizes 910px */
+@media (min-width: 910px) {
+    .bag-large-container {
+        min-height: 700px;
+    }
+}
+
 .overlay {
 	height: 100%;
 	width: 100%;
